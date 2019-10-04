@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": 7
     },
     {
       "id": 2,
@@ -47,6 +47,72 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 13
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 14
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 15
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 16
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 17
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 18
+    },
+    {
+      "name": "Bing Bong",
+      "image": "https://vignette.wikia.nocookie.net/pixar/images/8/85/1923_BingBong_InsideOut_501_copie.jpg/revision/latest?cb=20150611010239",
+      "likes": 0,
+      "id": 19
     }
   ]
 }
