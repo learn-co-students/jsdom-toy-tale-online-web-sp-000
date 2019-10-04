@@ -44,11 +44,31 @@ function createToy(e) {
       'Accept': 'application/json'
     },
     body: JSON.stringify({
-      "name": toy_data.name.value,
-      "image": toy_data.image.value,
+      "name": e.name.value,
+      "image": e.image.value,
       "likes": 0
     })
   }).then(resp => resp.json()).then(function(json) {
     makeToyCard(json);
   })
+}
+
+function likes(e) {
+  e.preventDefault()
+  let more = parseInt(e.target.previousElementSibling.innerText) + 1
+
+  fetch(`http://localhost:3000/toys/${e.target.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      "likes": more
+    })
+  })
+  .then(res => res.json())
+  .then((like_obj => {
+    e.target.previousElementSibling.innerText = `${more} likes`;
+  }))
 }
