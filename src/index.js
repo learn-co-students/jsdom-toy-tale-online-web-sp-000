@@ -29,25 +29,26 @@ function getToys() {
 
 // 2. fetch a POST request to add a toy
 function postToy(toyObj) {
-
-    const configObj = {
-        method: "POST",
-        header: {
-            "Content-Type": "application/json",
+    fetch('http://localhost:3000/toys', {
+        method: 'POST',
+        headers: {
+            "Content-Type": 'application/json',
             "Accept": "application/json"
         },
-        body: JSON.stringify(toyObj),
-    };
+        body: JSON.stringify({
+            "name": toyObj.name.value,
+            "image": toyObj.image.value,
+            "likes": 0
+        })
+    })
+    .then(res => res.json())
+    .then((object) => {
+        let toy = displayToy(object)
+        collection.append(toy)
+    })
+}
 
-    fetch("http://localhost:3000/toys", configObj)
-        .then(response => response.json())
-        .then((object) => {
-            let toy = createToy(object);
-            collection.append(toy);
-        });
-};
-
-function createToy(object) {
+function displayToy(object) {
     let h3 = document.createElement('h3');
     h3.textContent = object.name;
 
@@ -99,6 +100,6 @@ function likes(e) {
 // 4. display each toy inside of #toy-collection
 getToys().then(toys => {
     toys.forEach(toy => {
-        createToy(toy)
-    });
-});
+        displayToy(toy)
+    })
+})
