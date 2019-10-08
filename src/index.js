@@ -42,12 +42,12 @@ function postToy(toyObj) {
     fetch("http://localhost:3000/toys", configObj)
         .then(response => response.json())
         .then((object) => {
-            let toy = displayToys(object);
+            let toy = createToy(object);
             collection.append(toy);
         });
 };
 
-function displayToys(object) {
+function createToy(object) {
     let h3 = document.createElement('h3');
     h3.textContent = object.name;
 
@@ -63,10 +63,10 @@ function displayToys(object) {
     btn.setAttribute('id', object.id);
     btn.textContent = "like";
 
-    // btn.addEventListener('click', (e) => {
-    //     console.log(e.target.dataset);
-    //     likes(e)
-    // })
+    btn.addEventListener('click', (e) => {
+        console.log(e.target.dataset);
+        likes(e)
+    })
 
     let card = document.createElement('div');
     card.setAttribute('class', 'card');
@@ -74,31 +74,31 @@ function displayToys(object) {
     collection.append(card);
 }
 
-// function likes(e) {
-//     e.preventDefault()
-//
-//     let more = parseInt(e.target.previousElementSibling.innerText) + 1
-//
-//     fetch(`http://localhost:3000/toys/${e.target.id}`, {
-//         method: "PATCH",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "Accept": "application/json"
-//         },
-//         body: JSON.stringify({
-//             "likes": more
-//         })
-//     })
-//     .then(res => res.json())
-//     .then((like_obj => {
-//         e.target.previousElementSibling.innerText = `${more} likes`;
-//     }));
-// }
+function likes(e) {
+    e.preventDefault()
+
+    let more = parseInt(e.target.previousElementSibling.innerText) + 1
+
+    fetch(`http://localhost:3000/toys/${e.target.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            "likes": more
+        })
+    })
+    .then(res => res.json())
+    .then((like_obj => {
+        e.target.previousElementSibling.innerText = `${more} likes`;
+    }));
+}
 
 // 3. iterate over each property of the json object
 // 4. display each toy inside of #toy-collection
 getToys().then(toys => {
     toys.forEach(toy => {
-        renderToys(toy)
+        createToy(toy)
     });
 });
