@@ -24,6 +24,7 @@ fetch('http://localhost:3000/toys')
     response.forEach(function(toy) {
       let card = document.createElement('div')
       card.className = 'card'
+      card.id = toy.id
       let h2 = document.createElement('h2');
       h2.innerHTML = toy.name
       let img = document.createElement('img');
@@ -34,14 +35,42 @@ fetch('http://localhost:3000/toys')
       let btn = document.createElement('button');
       btn.className = 'like-btn'
       btn.innerText = 'Like <3';
+      like(btn, p, toy);
       [h2, img, p, btn].forEach(function(element) {
         card.appendChild(element)
       })
-      card.id = toy.id
       document.querySelector('div#toy-collection').appendChild(card)
     })
     console.log(response);
   });
+
+function like(btn, p, toy) {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    toy.likes ++;
+
+    let formData = {
+      likes: toy.likes
+    };
+     
+    let configObj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(formData)
+    };
+
+    fetch(`http://localhost:3000/toys/${toy.id}`, configObj)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(toy) {
+      p.innerText = `${toy.likes} Likes`;
+    });
+  });
+}
 
 function uploadToy() {
   let formData = {
@@ -85,16 +114,6 @@ function uploadToy() {
     });
 }
 
-function like() {
-  document.querySelectorAll('button.like-btn').forEach(function(button) {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      id = e.target.parentElement.id;
-      console.log(id);
-    });
-  });
-}
-
 function uploadToyAction() {
   document.querySelector('input.submit').addEventListener('click', function(e) {
     e.preventDefault();
@@ -106,5 +125,4 @@ function uploadToyAction() {
 
 document.addEventListener("DOMContentLoaded", function() {
   uploadToyAction();
-  like();
 });
