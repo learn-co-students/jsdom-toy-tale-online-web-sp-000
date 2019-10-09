@@ -65,7 +65,6 @@ function createToy(event) {
       alert("Unable to process");
       console.log(error.message);
     });
-  event.preventDefault();
 }
 
 function addLikeListeners() {
