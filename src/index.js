@@ -75,6 +75,10 @@ function createToy(event) {
       toyCardDiv.innerHTML = toyCard;
 
       document.getElementById('toy-collection').appendChild(toyCardDiv)
+
+      name = '';
+      image = '';
+      toyForm.style.display = 'none'
     })
     .catch(function (error) {
       alert("Unable to process");
