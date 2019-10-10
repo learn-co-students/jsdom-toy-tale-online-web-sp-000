@@ -39,6 +39,7 @@ addBtn.addEventListener('click', () => {
 document.querySelector('.add-toy-form').addEventListener('submit', createToy)
 
 function createToy(event) {
+  event.preventDefault();
   name = document.querySelector('input[name="name"]').value
   image = document.querySelector('input[name="image"]').value
 
@@ -58,8 +59,22 @@ function createToy(event) {
   };
 
   fetch("http://localhost:3000/toys", configObj)
-    .then(function (response) {
-      return response.json();
+    .then(response => response.json())
+    .then(data => {
+      let toyCardDiv = document.createElement('div')
+      toyCardDiv.classList.add('card')
+      toyCardDiv.id = `${data.id}`
+
+      let toyCard = `
+        <h2>${data.name}</h2>
+        <img src="${data.image}" class="toy-avatar" />
+        <p>${data.likes} Likes </p>
+         <button class="like-btn">Like <3</button>
+        `
+
+      toyCardDiv.innerHTML = toyCard;
+
+      document.getElementById('toy-collection').appendChild(toyCardDiv)
     })
     .catch(function (error) {
       alert("Unable to process");
