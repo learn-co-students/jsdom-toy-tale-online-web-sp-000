@@ -10,7 +10,7 @@
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 8
+      "likes": 12
     },
     {
       "id": 3,
@@ -47,6 +47,24 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Your mom",
+      "image": "https://www.pragmaticmom.com/wp-content/uploads/2012/05/mom.jpeg",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "New Toy",
+      "image": "https://cdn.shopify.com/s/files/1/2284/6393/products/fao-schwarz-plush-2018-edition-12-inch-plush-anniversary-bear-with-puffer-vest-3856695656535_620x.jpg?v=1552020969",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "name": "Teddy Bear",
+      "image": "https://cdn.shopify.com/s/files/1/2284/6393/products/fao-schwarz-plush-2018-edition-12-inch-plush-anniversary-bear-with-puffer-vest-3856695656535_620x.jpg?v=1552020969",
+      "likes": 9,
+      "id": 12
     }
   ]
 }
