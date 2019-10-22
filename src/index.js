@@ -29,7 +29,6 @@ const addLikeListeners = () => {
 }
 
 const addNewToy = (toy) => {
-  debugger
   renderToy(toy); 
   const reqObj = {
     method:"POST",
