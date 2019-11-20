@@ -47,6 +47,24 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "pikachu",
+      "image": "https://www.pokemoncenter.com/wcsstore/PokemonCatalogAssetStore/images/catalog/products/P4828/701-03127/P4828_701-03127_01.jpg",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "name": "Tiger Mask",
+      "image": "https://i.pinimg.com/originals/bf/f8/b6/bff8b6ddce7c5b47668813f29744a614.jpg",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "Tiger Mask",
+      "image": "https://i.pinimg.com/236x/2e/ad/3d/2ead3dadb891fdc902cf9da2e0d99ad2--manga-art-manga-anime.jpg",
+      "likes": 0,
+      "id": 11
     }
   ]
 }
