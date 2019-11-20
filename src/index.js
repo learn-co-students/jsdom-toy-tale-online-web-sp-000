@@ -39,9 +39,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 
 function addLikes(event) {
-  //event.preventDefault()
-  const putToyLikes = parseInt(`${event.target.likes}`) + 1
-  fetch(`http://localhost:3000/toys/${event.target.id}`, toyLikeArgument)
+  const putToyLikes = parseInt(event.target.parentElement.querySelector("p").innerHTML[0])
   const toyLikeArgument = {
     method: 'PATCH',
     headers: 
@@ -51,13 +49,14 @@ function addLikes(event) {
     },
     
     body: JSON.stringify({
-      "likes": `${putToyLikes}`
+      "likes": `${putToyLikes + 1}`
     })
   }
+  fetch(`http://localhost:3000/toys/${event.target.id}`, toyLikeArgument)
   .then((response) => {
     return response.json()
   }) .then(likesObject => {
-    event.target.innerText = `${putToyLikes} likes`
+    putToyLikes.innerText = `${putToyLikes + 1} likes`
   })
 
 }
@@ -66,7 +65,6 @@ function getToys() {
   return fetch('http://localhost:3000/toys')
   .then(response => response.json())
   .then(function(toyArgument){
-      //return renderToys(toyArgument)
       toyArgument.forEach(toy => {
         renderToys(toy)
       })
@@ -79,8 +77,7 @@ function renderToys(toy) {
   <h2>${toy.name}</h2>
   <img src="${toy.image}" class="toy-avatar" />
   <p>${toy.likes} likes </p>
-  <button id="${toy.id}" class="like-btn" onclick="addLikes()">Like <3 </button>
+  <button id="${toy.id}" class="like-btn" onclick="addLikes(event)">Like <3 </button>
   </div>`
   toyCollection.innerHTML += toyCard
-  //let button = document.getElementById(`${toy.id}`)
 }
