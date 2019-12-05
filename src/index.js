@@ -14,23 +14,26 @@ document.addEventListener("DOMContentLoaded", ()=>{
       toyForm.style.display = 'none'
     }
   });
+
   // adds all current Toys
+  // on toy creation, the like button is added.
 
   addAllToys()
 
   // gets access to form
+  // on submit toy is added to DOM and also the db
+
   let form = document.querySelector(".add-toy-form");
   form.addEventListener("submit", e => {
     e.preventDefault()
     toyName = e.target.elements[0].value;
     toyUrl = e.target.elements[1].value;
-    addToyToDb(toyName, toyUrl);
+    addToy(toyName, toyUrl);
     e.target.reset()
   });
-
-  // like a toy
-
 })
+
+// add the toy card using the toy json
 
 function addToyCard(toyObject) {
   let card = document.createElement("div");
@@ -46,6 +49,7 @@ function addToyCard(toyObject) {
 
   // this adds the like button capabilities
   card.lastElementChild.addEventListener("click", (e) =>{
+    e.preventDefault()
     likeToy(e.target.parentNode.id)
   });
 };
@@ -62,7 +66,9 @@ function addAllToys() {
     });
 }
 
-function addToyToDb(toyName, toyUrl) {
+// adds toy to db and subsequently adds toy to DOM also.
+
+function addToy(toyName, toyUrl) {
 
   let toy = {
     "name": toyName,
@@ -85,7 +91,6 @@ function addToyToDb(toyName, toyUrl) {
     })
     .then(responseJson => {
       addToyCard(responseJson)
-      console.log(responseJson)
     })
     .catch(error => {
       console.log(error);
@@ -94,7 +99,12 @@ function addToyToDb(toyName, toyUrl) {
 
 function likeToy(toyId) {
 
+  // grabs current likes DOM element (a span)
   let currentLikes = document.getElementById(`${toyId}`).querySelector("span")
+
+  // patches the database to the new like count and on return of the final <promise>.then()
+  // updates the current DOM from the new database like count
+
   let configObj = {
     method: "PATCH",
     headers: {
@@ -115,5 +125,4 @@ function likeToy(toyId) {
       let toy = toysJson;
       currentLikes.innerHTML = `${toy.likes}`
     });
-
 }
