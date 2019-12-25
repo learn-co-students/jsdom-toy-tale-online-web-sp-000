@@ -29,16 +29,23 @@ function fetchToys(){
 
 
 function addJsonToBlock(json){
-
   for (const toy of json){
-    toys.innerHTML += 
-    `<div class='card'>
-    <h2>${toy.name}</h2>
-    <img src=${toy.image} class="toy-avatar" />
-    <p>${toy.likes} Likes </p>
-    <button class="like-btn">Like</button>
-    </div>`
+    renderToys(toy)
   }
+}
+
+function renderToys(json){
+  let divCard = document.createElement('div')
+  divCard.setAttribute('class', 'card')
+  divCard.setAttribute('id', `card${json.id}`)
+
+  divCard.innerHTML = 
+  `<h2>${json.name}</h2>
+  <img src=${json.image} class="toy-avatar" />
+  <p>${json.likes} Likes </p>
+  <button class="like-btn" id=${json.id} onclick="addLikes(this)">Like</button>`
+
+  toys.appendChild(divCard)
 }
 
 let form = document.querySelector("form")
@@ -47,9 +54,11 @@ let inputs = document.querySelectorAll("input")
 
 form.addEventListener("submit", addNewToy)
 function addNewToy(){
+  event.preventDefault()
   let formData = {
     name: inputs[0].value,
-    image: inputs[1].value
+    image: inputs[1].value,
+    likes: 0
   }
   let obj = {
     method: "POST",
@@ -61,5 +70,27 @@ function addNewToy(){
   }
   fetch("http://localhost:3000/toys",obj)
   .then(resp=>resp.json())
-  .then(json=>alert(json))
+  .then(json=>renderToys(json))
+  
+}
+
+function addLikes(button){
+  let toyID = button.id
+  let likes = parseInt(document.querySelector(`#card${toyID} p`).innerText)+1
+  let obj = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      likes: likes
+    })
+  }
+  fetch(`http://localhost:3000/toys/${toyID}`,obj)
+   .then(resp=>resp.json())
+   .then(json=>(json))
+
+  document.querySelector(`#card${toyID} p`).innerText = `${likes} likes`
+
 }
