@@ -30,10 +30,10 @@ function fetchToys() {//load all toys
     .then(json => renderToys(json));
 }
 
-function modifyToy(toy, toyLikes) {
+function modifyToy(toy, toyLikes) { //todo error here
   let toyDiv = document.getElementById(`toy_${toy.id}`);
   toyDiv.querySelector('p').innerText = `${toy.likes} Likes`;
-  toyButton = toyDiv.querySelector('button').style;
+  let toyButton = toyDiv.querySelector('button').style;
   toyButton.backgroundColor = "whitesmoke";
   toyButton.border = "#e04b52 solid 1px";
   toyButton.color = "#e04b52";
