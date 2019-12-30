@@ -32,11 +32,15 @@ function fetchToys() {//load all toys
 
 function modifyToy(toy, toyLikes) { //todo error here
   let toyDiv = document.getElementById(`toy_${toy.id}`);
-  toyDiv.querySelector('p').innerText = `${toy.likes} Likes`;
-  let toyButton = toyDiv.querySelector('button').style;
+  if (parseInt(toy.likes) == 1){
+    toyDiv.querySelector('p').innerText = `${toy.likes} Like`;
+  } else {
+    toyDiv.querySelector('p').innerText = `${toy.likes} Likes`;
+  }
+  /*let toyButton = toyDiv.querySelector('button').style;
   toyButton.backgroundColor = "whitesmoke";
   toyButton.border = "#e04b52 solid 1px";
-  toyButton.color = "#e04b52";
+  toyButton.color = "#e04b52";*/
 
 }
 
@@ -45,7 +49,7 @@ function createLiker(div, toy){
   div.querySelector('button').addEventListener('click',function(e){
     patchData(toy);
     const collectionReset = document.getElementById('toy-collection');
-    collectionReset.innerHTML = '';
+    //collectionReset.innerHTML = '';
     //e.preventDefault();
   });
 
@@ -56,7 +60,8 @@ function renderToys(json) {
   const addToMe = document.getElementById('toy-collection');
   let toys = [];
 
-  json.forEach(toy => {
+  for (let toy of json){
+  //json.forEach(toy => {
     const div = document.createElement('div');
     div.class = 'card';
     div.id = `toy_${toy.id}`;
@@ -68,7 +73,7 @@ function renderToys(json) {
 
     createLiker(div, toy);
     toys.push(div);
-  });
+  }
 
   for (const element of toys){
     addToMe.appendChild(element);
