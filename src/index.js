@@ -65,10 +65,16 @@ function renderToys(json) {
     const div = document.createElement('div');
     div.class = 'card';
     div.id = `toy_${toy.id}`;
+    let pString = ``;
+    if (toy.likes){
+      pString = ``;
+    } else {
+      pString = ``;
+    }
     div.innerHTML =
       `<h2>${toy.name}</h2>
       <img class="toy-avatar" src=${"\"" + toy.image + "\""} />
-      <p>${toy.likes} Likes</p><button class="like-btn">Like</button>
+      <p>${pString} Likes</p><button class="like-btn">Like</button>
       `;
 
     createLiker(div, toy);
