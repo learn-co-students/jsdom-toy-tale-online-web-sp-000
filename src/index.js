@@ -14,3 +14,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
   })
 
 })
+
+
+function getToys(){
+  fetch('http://localhost:3000/toys')
+  .
+}
