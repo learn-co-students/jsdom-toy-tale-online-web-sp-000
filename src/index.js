@@ -1,4 +1,6 @@
 let addToy = false;
+var divCollect = document.querySelector('#toy-collection')
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.querySelector("#new-toy-btn");
@@ -29,7 +31,6 @@ function fetchToys() {
 
 function addToys(toy) {
   console.log(toy)
-  var divCollect = document.querySelector('#toy-collection')
   const newDiv = document.createElement('div')
   const h2 = document.createElement('h2')
     h2.innerHTML = toy.name
@@ -49,5 +50,22 @@ function addToys(toy) {
 
 fetchToys()
 
-
-//function addNewToy()
+function postToy(toy) {
+  fetch("http://localhost:3000/toys"), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      "name": toy.name.value,
+      "image": toy.image.value,
+      "likes" : 0
+    })
+  }
+  .then(res => res.json())
+  .then((toy_object) => {
+    const newToy = addToys(toy_object)
+    divCollect.append(newToy)
+  })
+}
