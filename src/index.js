@@ -27,7 +27,7 @@ function fetchToys() {
 
 function addToys(toy) {
   const newDiv = document.createElement('div')
-  var divCollect = document.querySelector('#toy-collection')
+  const divCollect = document.querySelector('#toy-collection')
   const h2 = document.createElement('h2')
     h2.innerHTML = toy.name
   let img = document.createElement('img')
@@ -37,6 +37,10 @@ function addToys(toy) {
   let button = document.createElement('button')
   newDiv.classList.add = "card"
   button.classList.add("like-btn")
+  button.innerText = "like"
+  button.addEventListener('click', event => {
+    likes(toy, event)
+  })
   img.class = "toy-avatar"
   newDiv.append(h2, img, p, button)
   divCollect.append(newDiv)
@@ -44,7 +48,7 @@ function addToys(toy) {
 
 function postToy(toy, event) {
   event.preventDefault() //this makes it so that event can happen on submit WITHOUT page reloading
-  fetch("http://localhost:3000/toys"), {
+  fetch("http://localhost:3000/toys/:id"), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -67,8 +71,8 @@ function postToy(toy, event) {
 
 function likes(toy, event) {
   event.preventDefault()
-  likeCount = parseInt(event.target.previousSibling.innerHTML, 10) + 1 //likes object, incremented by 1
-  fetch(`http://localhost:3000/toys/${toy.target.id}`), {
+  const likeCount = parseInt(event.target.previousSibling.innerHTML, 10) + 1 //likes object, incremented by 1
+  fetch(`http://localhost:3000/toys/${toy.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -77,9 +81,10 @@ function likes(toy, event) {
     body: JSON.stringify({
       "likes": likeCount
     })
-  }
+  })
   .then(res => res.json())
   .then(likedObject => {
-    event.target.previousSibling.innerHTML = `${likeCount}`
+    console.log(likedObject)
+    event.target.previousSibling.innerHTML = likedObject.likes
   })
 }
