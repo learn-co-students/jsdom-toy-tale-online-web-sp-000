@@ -15,9 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// const submitButton = document.querySelector('input[name="submit"]')
-// submitButton.addEventListener("click", postToy())
-
 function fetchToys() {
   fetch("http://localhost:3000/toys")
   .then(resp => resp.json())
@@ -70,7 +67,7 @@ function postToy(toy, event) {
 
 function likes(toy, event) {
   event.preventDefault()
-  likeCount = //likes object, incremented by 1
+  likeCount = parseInt(event.target.previousSibling.innerHTML, 10) + 1 //likes object, incremented by 1
   fetch(`http://localhost:3000/toys/${toy.target.id}`), {
     method: "PATCH",
     headers: {
@@ -78,11 +75,11 @@ function likes(toy, event) {
       "Accept": "application/json"
     },
     body: JSON.stringify({
-      "likes:" likeCount
+      "likes": likeCount
     })
   }
   .then(res => res.json())
   .then(likedObject => {
-    ///likeCount?
+    event.target.previousSibling.innerHTML = `${likeCount}`
   })
 }
