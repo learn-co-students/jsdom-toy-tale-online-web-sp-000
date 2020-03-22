@@ -1,25 +1,54 @@
-// Variables ////////////////////////
 const addBtn = document.querySelector('#new-toy-btn')
 const toyForm = document.querySelector('.container')
 let addToy = false
 let divCollect = document.querySelector('#toy-collection')
 
-// GET Toys /////////////////////////
 function getToys() {
   return fetch('http://localhost:3000/toys')
-      .then(resp => resp.json())
+      .then(res => res.json())
 }
 
-// Render Each Toy ///////////////////
-getToys().then(toys => {
-  toys.forEach(toy => {
-    // function to render toys goes here or something
-    renderToys(toy)
+function postToy(toy_data) {
+  fetch('http://localhost:3000/toys', {
+    method: 'POST',
+    headers: {
+      'Content_type': 'application/json',
+      Accept: 'application/json'
+    },
+    body: JSON.stringify({
+      "name": toy_data.name.value,
+      "image": toy_data.image.value,
+      "likes": 0
+    })
   })
-})
+      .then(res => res.json())
+      .then((obj_toy) => {
+        let new_toy = renderToys(obj_toy)
+        divCollect.append(new_toy)
+      })
+}
 
-// Function to render toys //////////
-function renderToy(toy) {
+function likes(e) {
+  e.preventDefault()
+  let more = parseInt(e.target.previousElementSibling.innerText) + 1
+
+  fetch(`http://localhost:3000/toys/${e.target.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.strigify({
+      "likes": more
+    })
+  })
+      .then(res => res.json())
+      .then((like_obj => {
+        e.target.previousElementSibling.innerText = `${more} likes1;`
+      }))
+}
+
+function renderToys(toy) {
   let h2 = document.createElement('h2')
   h2.innerText = toy.name
 
@@ -28,13 +57,13 @@ function renderToy(toy) {
   img.setAttribute('class', 'toy-avatar')
 
   let p = document.createElement('p')
-  p.innerText = '${toy.likes} likes'
+  p.innerText = `${toy.likes} likes`
 
   let btn = document.createElement('button')
   btn.setAttribute('class', 'like-btn')
   btn.setAttribute('id', toy.id)
   btn.innerText = "like"
-  btn.addEventListener('click',(e) => {
+  btn.addEventListener('click', (e) => {
     console.log(e.target.dataset);
     likes(e)
   })
@@ -42,12 +71,12 @@ function renderToy(toy) {
   let divCard = document.createElement('div')
   divCard.setAttribute('class', 'card')
   divCard.append(h2, img, p, btn)
-  divCollection.append(divCard)
+  divCollect.append(divCard)
 }
 
-// Add listener to 'Add Toy' button to show or hide form ///
+// add listener to 'Add Toy' button to show or hide form
 addBtn.addEventListener('click', () => {
-  // hide & seek with the form /////////////////////////////
+  // hide & seek with the form
   addToy = !addToy
   if (addToy) {
     toyForm.style.display = 'block'
@@ -60,55 +89,10 @@ addBtn.addEventListener('click', () => {
   }
 })
 
-// Check target value ////////////////////////////////
-// syntax for finding event target
-// const header was found through inspecting element on browser
-const header = document.querySelector("#firstHeading")
-header.addEventListener("click", function(e){
-  consle.log(e)
+// start by getting all toys
+getToys().then(toys => {
+  toys.forEach(toy => {
+    // function to render toys goes here or something
+    renderToys(toy)
+  })
 })
-
-// Post Toy Function ////////////////////////////////
-function postToy(toy_data) {
-  fetch('http://localhost:3000/toys', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: "application/json"
-    },
-    body: JSON.stringify({
-      "name": toy_data.name.value,
-      "image": toy_data.image.value,
-      "likes": 0
-
-    })
-  })
-      .then(res => res.json())
-      .then((obj_toy) => {
-        let new_toy = renderToys(obj_toy)
-        divCollect.append(new_toy)
-      })
-}
-
-// Patch for Like Button ///////////////////////
-function likes(e) {
-  e.preventDefault()
-  let more = parseInt(e.target.previousElementSibling.innerText) + 1
-
-  fetch(`http://localhost:3000/toys/${e.target.id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-
-    },
-    body: JSON.stringify({
-      "likes": more
-    })
-  })
-      .then(res => res.json())
-      .then((like_obj => {
-        e.target.previousElementSibling.innerText = `${more} likes`;
-      }))
-}
-
