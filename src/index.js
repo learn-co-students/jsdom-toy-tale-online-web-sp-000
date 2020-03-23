@@ -18,10 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.json();
     })
     .then(function(json){
-      console.log(json)
-      addToCollection(json) 
       json.forEach(element => addToCollection(element));
-    
 
     })
 
@@ -38,23 +35,31 @@ document.addEventListener("DOMContentLoaded", () => {
             "image": "https://vignette.wikia.nocookie.net/p__/images/8/88/Jessie_Toy_Story_3.png/revision/latest?cb=20161023024601&path-prefix=protagonist",
             "likes": 0
       })
-      // .then(function(response){
-      //   return response.json();
-      // })
-      // .then(function(json){
-      //   addToCollection(json) 
-      // })    
     })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json){
+        addToCollection(json) 
+      })    
+
+
+
+
+
 
 
 function addToCollection(element){
   let toyCollDiv = document.getElementById("toy-collection")
 
   let createDiv = document.createElement("div")
+
+  createDiv.id = element.id
   let headerTwo = document.createElement("h2")
   let toyImg = document.createElement("img")
   let likes = document.createElement("p")
   let likeButton = document.createElement("button")
+  
 
 
       headerTwo.innerHTML = element.name 
@@ -71,5 +76,28 @@ function addToCollection(element){
       createDiv.appendChild(likeButton)
     
       toyCollDiv.appendChild(createDiv)
-}
-})
+
+
+      likeButton.addEventListener('click', function(event){
+        let getId = event.target.parentNode.id
+        let likeCount = event.target.previousElementSibling.innerText
+        let numOnly = likeCount.split(" ")[0]
+        numOnly++
+
+        likes.innerText = `${numOnly} likes`
+        
+    
+        fetch(`http://localhost:3000/toys/${getId}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          }, 
+
+          body: JSON.stringify({
+            "likes": numOnly
+          })
+        })
+      })
+}})
+
