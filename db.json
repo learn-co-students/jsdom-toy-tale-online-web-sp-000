@@ -4,25 +4,25 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": "27"
     },
     {
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 8
+      "likes": "11"
     },
     {
       "id": 3,
       "name": "Mr. Potato Head",
       "image": "https://vignette.wikia.nocookie.net/universe-of-smash-bros-lawl/images/d/d8/Mr-potato-head-toy-story.gif/revision/latest?cb=20151129131217",
-      "likes": 3
+      "likes": "6"
     },
     {
       "id": 4,
       "name": "Slinky Dog",
       "image": "https://www.freeiconspng.com/uploads/slinky-png-transparent-1.png",
-      "likes": 4
+      "likes": "7"
     },
     {
       "id": 5,
@@ -49,10 +49,34 @@
       "likes": -2
     },
     {
-      "name": "Spongebob",
-      "image": "https://nickelodeonuniverse.com/wp-content/uploads/Spongebob.png",
-      "submit": "Create New Toy",
+      "name": "Yoda",
+      "image": "https://upload.wikimedia.org/wikipedia/en/9/9b/Yoda_Empire_Strikes_Back.png",
+      "likes": "1",
       "id": 9
+    },
+    {
+      "name": "Creepy Dolly",
+      "image": "https://i.etsystatic.com/18264358/r/il/cecaff/1697316825/il_570xN.1697316825_px5e.jpg",
+      "likes": "1",
+      "id": 10
+    },
+    {
+      "name": "Dancing flower",
+      "image": "https://mi0.rightinthebox.com/images/384x384/201712/lelnbq1513913336966.jpg",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "name": "Badger",
+      "image": "https://images-eu.ssl-images-amazon.com/images/I/812kqAmjdpL._AC_SS350_.jpg",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "name": "car",
+      "image": "https://media.very.co.uk/i/very/UT135_SQ1_0000000017_RED_SLf/little-tikes-cozy-coupe-red.jpg?$266x354_standard$",
+      "likes": "4",
+      "id": 13
     }
   ]
 }
