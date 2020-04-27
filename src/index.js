@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // console.log(e.target.id)
           
           e.target.id = parseInt(e.target.id) + 1
+          e.target.previousElementSibling.innerText = `${e.target.id} Likes`
           // console.log(parseInt(e.target.id))
           // console.log(`${toy.name}`)
           // console.log(e.target.parentElement.querySelector("p"))
@@ -69,11 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
             })
           };
 
-          return fetch("http://localhost:3000/toys/:id", configObj)
+          return fetch(`http://localhost:3000/toys/${e.target.parentElement.id}`, configObj)
             .then(function(response) {
               return response.json();
             })
             .then(function(object) {
+              // location.reload();
               console.log("HIIIIIIIIIIIII")
             })
             .catch(function(error) {
@@ -81,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
               console.log(error.message);
             })
         
-          location.reload();
         }
         //END LIKETOY
 
