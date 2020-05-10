@@ -14,11 +14,12 @@
       />
     </div>
 
-    <div class="container">
-      <form class="add-toy-form">
+    <div class="container" id="form-container">
+      <form id="toy-form" class="add-toy-form" action="#" method="post">
         <h3>Create a toy!</h3>
 
         <input
+          id="toy-name"
           type="text"
           name="name"
           value=""
@@ -27,6 +28,7 @@
         />
         <br />
         <input
+          id="toy-url"
           type="text"
           name="image"
           value=""
