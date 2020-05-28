@@ -23,10 +23,30 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function makeToyCards(json) {
+  console.log(json);
   let toyCollection = document.getElementById('toy-collection');
   for(const element of json) {
     let toy = document.createElement('div');
     toy.className = "card";
+
+    let name = document.createElement('h2');
+    name.innerHTML = element.name;
+    toy.appendChild(name);
+
+    let toyImage = document.createElement('img');
+    toyImage.className = "toy-avatar";
+    toyImage.src = element.image;
+    toy.appendChild(toyImage);
+
+    let toyLikes = document.createElement('p');
+    toyLikes.innerHTML = `${element.likes} Likes`;
+    toy.appendChild(toyLikes);
+
+    let toyButton = document.createElement('button');
+    toyButton.className = "like-btn";
+    toyButton.innerHTML = "Like <3";
+    toy.appendChild(toyButton);
+
     toyCollection.appendChild(toy);
   }
 }
