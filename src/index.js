@@ -19,7 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(function(object) {
       makeToyCards(object);
-    })
+    });
+
+  const createNewToyForm = document.querySelector(".add-toy-form");
+  createNewToyForm.addEventListener('submit', function(event) {
+    const toyName = document.getElementsByName('name')[0].value;
+    const toyImgPath = document.getElementsByName('image')[0].value;
+    event.preventDefault();
+    submitNewToy(toyName, toyImgPath);
+
+    addToy = !addToy;
+    toyFormContainer.style.display = "none";
+  });
 });
 
 function makeToyCards(json) {
@@ -49,4 +60,57 @@ function makeToyCards(json) {
 
     toyCollection.appendChild(toy);
   }
+}
+
+function makeNewToyCard(object) {
+  let toyCollection = document.getElementById('toy-collection');
+
+  let toy = document.createElement('div');
+  toy.className = "card";
+
+  let name = document.createElement('h2');
+  name.innerHTML = object.name;
+  toy.appendChild(name);
+
+  let toyImage = document.createElement('img');
+  toyImage.className = "toy-avatar";
+  toyImage.src = object.image;
+  toy.appendChild(toyImage);
+
+  let toyLikes = document.createElement('p');
+  toyLikes.innerHTML = '0 Likes';
+  toy.appendChild(toyLikes);
+
+  let toyButton = document.createElement('button');
+  toyButton.className = "like-btn";
+  toyButton.innerHTML = "Like <3";
+  toy.appendChild(toyButton);
+
+  toyCollection.appendChild(toy);
+}
+
+function submitNewToy(name, imgPath) {
+
+  let formData = {
+    name: name,
+    image: imgPath,
+    likes: 0
+  }
+
+  let configObj = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify(formData)
+  }
+
+  fetch("http://localhost:3000/toys", configObj)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(object) {
+    makeNewToyCard(object);
+  })
 }
