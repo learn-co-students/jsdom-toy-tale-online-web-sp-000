@@ -31,10 +31,19 @@ document.addEventListener("DOMContentLoaded", () => {
     addToy = !addToy;
     toyFormContainer.style.display = "none";
   });
+
+  let likeBtns = document.getElementsByClassName('like-btn');
+  console.log(likeBtns);
+  for(let i = 0; i < likeBtns.length; i++) {
+    console.log('is this being reached');
+    likeBtns[i].addEventListener('click', () => {
+      console.log('I heard that!');
+    })
+  }
+
 });
 
 function makeToyCards(json) {
-  console.log(json);
   let toyCollection = document.getElementById('toy-collection');
   for(const element of json) {
     let toy = document.createElement('div');
@@ -113,4 +122,8 @@ function submitNewToy(name, imgPath) {
   .then(function(object) {
     makeNewToyCard(object);
   })
+}
+
+function addLike(element) {
+  console.log(element);
 }
