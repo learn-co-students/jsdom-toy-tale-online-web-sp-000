@@ -65,6 +65,10 @@ function makeToyCards(json) {
     let toyButton = document.createElement('button');
     toyButton.className = "like-btn";
     toyButton.innerHTML = "Like <3";
+    toyButton.addEventListener('click', () => {
+      toyLikes.innerHTML = `${element.likes + 1} Likes`;
+      addLike(element.likes + 1, element.id);
+    })
     toy.appendChild(toyButton);
 
     toyCollection.appendChild(toy);
@@ -124,6 +128,27 @@ function submitNewToy(name, imgPath) {
   })
 }
 
-function addLike(element) {
-  console.log(element);
+function addLike(newLikes, toyId) {
+  let formData = {
+    "likes": newLikes
+  }
+
+  let configObj = {
+    method: 'PATCH',
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      "likes": newLikes
+    })
+  }
+
+  fetch(`http://localhost:3000/toys/${toyId}`, configObj)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(object) {
+    console.log(object);
+  })
 }
