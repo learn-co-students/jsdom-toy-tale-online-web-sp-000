@@ -14,6 +14,15 @@ document.addEventListener("DOMContentLoaded", (
     likes
     })
   })
+  .then(function(response) {
+    return response.json()
+  })
+  .then(function(object) {
+    document.body.innerHTML = object["id"];
+  })
+  .catch(function (error) {
+      document.body.innerHTML = error
+  })
 ) => {
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
