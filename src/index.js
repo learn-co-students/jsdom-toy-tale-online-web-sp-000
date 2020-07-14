@@ -1,6 +1,20 @@
 let addToy = false;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", (
+  return fetch("http://localhost:3000/users", {
+  method: "GET", 
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  body: JSON.stringify({
+    id, 
+    name, 
+    image, 
+    likes
+    })
+  })
+) => {
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
   addBtn.addEventListener("click", () => {
