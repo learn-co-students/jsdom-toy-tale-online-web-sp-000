@@ -1,38 +1,49 @@
 let addToy = false;
 
 document.addEventListener("DOMContentLoaded", (
-  return fetch("http://localhost:3000/users", {
+  fetch("http://localhost:3000/toys", {
   method: "GET", 
   headers: {
     "Content-Type": "application/json",
     "Accept": "application/json"
   },
-  body: JSON.stringify({
-    id, 
-    name, 
-    image, 
-    likes
-    })
   })
   .then(function(response) {
     return response.json()
   })
   .then(function(object) {
-    document.body.innerHTML = object["id"];
+    console.log(object)
+    renderToys(object)
+    // call a method that renders the toys
+    // renderToys method => renderToy iterates through each toy and call second method to do the iterating
+    // second method gets called and adds to the page (add listener)
+    // document.body.innerHTML = object["id"];
   })
   .catch(function (error) {
       document.body.innerHTML = error
   })
-) => {
-  const addBtn = document.querySelector("#new-toy-btn");
-  const toyFormContainer = document.querySelector(".container");
-  addBtn.addEventListener("click", () => {
-    // hide & seek with the form
-    addToy = !addToy;
-    if (addToy) {
-      toyFormContainer.style.display = "block";
-    } else {
-      toyFormContainer.style.display = "none";
-    }
-  });
-});
+)
+);
+
+function renderToys(object) {
+  object.forEach(object => renderToy(object)
+)}
+
+function renderToy(object) {
+  const toyCollection = document.querySelector("#toy-collection");
+  const classCard = document.createElement("card");
+  
+  let h2 = document.createElement("h2")
+  h2.innerText = object.name
+
+  let img = document.createElement('img');
+  img.src = object.image
+  img.class = "toy-avatar"
+
+  let p = document.createElement('p')
+  p.innerText = `${object.likes} likes`
+
+  classCard.setAttribute('class', 'card')
+  classCard.append(h2, img, p)
+  toyCollection.append(classCard)
+}
