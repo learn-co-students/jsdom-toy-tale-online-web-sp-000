@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": 18
     },
     {
       "id": 2,
@@ -47,6 +47,24 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "rexy",
+      "image": "https://rajzfilmjatekok.cdn.shoprenter.hu/custom/rajzfilmjatekok/image/cache/w500h500wt1/Toy%20Story%20/rex-beszelo-figura.jpg?lastmod=1595241907.1573772329",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "name": "rexy",
+      "image": "https://rajzfilmjatekok.cdn.shoprenter.hu/custom/rajzfilmjatekok/image/cache/w500h500wt1/Toy%20Story%20/rex-beszelo-figura.jpg?lastmod=1595241907.1573772329",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "rexy",
+      "image": "https://rajzfilmjatekok.cdn.shoprenter.hu/custom/rajzfilmjatekok/image/cache/w500h500wt1/Toy%20Story%20/rex-beszelo-figura.jpg?lastmod=1595241907.1573772329",
+      "likes": 0,
+      "id": 11
     }
   ]
 }
