@@ -63,11 +63,7 @@ function createToyCard(toy) {
     submitLikeIncrease(parentElement);
   });
 
-  newToyCard.appendChild(toyName);
-  newToyCard.appendChild(toyImage);
-  newToyCard.appendChild(toyLikes);
-  newToyCard.appendChild(likeButton);
-
+  newToyCard.append(toyName, toyImage, toyLikes, likeButton);
   toysContainer.appendChild(newToyCard);
 }
 
