@@ -76,7 +76,7 @@ function addNewToy() {
   fetch("http://localhost:3000/toys", configurationObject)
   .then(response => response.json())
   .then(object => {
-      let newToy = renderToys(object)
+      renderToys(object)
   })
 }
 
