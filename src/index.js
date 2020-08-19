@@ -43,6 +43,7 @@ function fetchToys () {
         here.appendChild(p);
         here.appendChild(button);
         button.addEventListener("click", (event) => {
+          event.preventDefault();
           console.log("liked", event.target);
           let numLikes = event.target.previousElementSibling.getAttribute("data-likes");
           numLikes = parseInt(numLikes) + 1
@@ -64,7 +65,8 @@ function fetchToys () {
             return response.json();
           })
           .then(function(object) {
-            console.log(object.likes);
+            // re-assigning inner text value
+            event.target.previousElementSibling.innerText = `${object.likes} likes`;
           });
         });
         i++;
