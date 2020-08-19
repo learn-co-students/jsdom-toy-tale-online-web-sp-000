@@ -115,6 +115,7 @@ function addNewToy () {
       let button = document.createElement("button");
       h2.innerText = object.formToyName;
       img.src = object.formToyImage;
+      img.classList = "toy-avatar"
       p.innerText = object.likes;
       button.classList.add("like-btn");
       let here = toyCol.appendChild(el);
@@ -122,8 +123,32 @@ function addNewToy () {
       here.appendChild(img);
       here.appendChild(p);
       here.appendChild(button);
-      button.addEventListener("click", () => {
-        console.log("liked");
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        console.log("liked", event.target);
+        let numLikes = event.target.previousElementSibling.getAttribute("data-likes");
+        numLikes = parseInt(numLikes) + 1
+        let formData = {
+          "likes": `${numLikes}`
+        }
+
+        let configObj = {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(formData)
+        }
+
+        fetch(`http://localhost:3000/toys/${event.target.id}`, configObj)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(object) {
+          // re-assigning inner text value
+          event.target.previousElementSibling.innerText = `${object.likes} likes`;
+        });
       });
     })
     .catch(function(error) {
