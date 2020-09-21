@@ -52,6 +52,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   getToys()
 
+  document.getElementById("toy-submit").addEventListener("click", function addToy() {
+    
+    //document.getElementById("add-toy-form").submit();
+    let configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        "name": document.getElementById("toy-name").value,
+        "image": document.getElementById("toy-url").value,
+        "likes": 0
+      })
+    }
+    fetch (`http://localhost:3000/toys`, configObj)
+    
+  });
+
 
 
 });
