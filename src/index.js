@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function addToys(name, image, likes){
+function createToy(name, image, likes){
   
   let configObj = {
     method: "POST",
@@ -47,6 +47,8 @@ function addToys(name, image, likes){
           document.getElementsByName('toyName') = object.name
           document.getElementsByName('toyImage') = object.image
           document.getElementsByName('toyLikes') = object.likes
+
+          debugger;
 
       })
       .catch(function(error) {
