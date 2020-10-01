@@ -34,28 +34,30 @@ function getToys(){
 function renderToys(toyCollection){
 
   for (const toy of toyCollection){
-      const card = document.createElement('div.card');
-      const toyName = document.createElement('h2');
 
-      const toyImage = document.createElement('img');
-      toyImage.setAttribute("class", "toy-avatar")
+      if (toy.name !== undefined){
+        const card = document.createElement('div.card');
+        const toyName = document.createElement('h2');
 
-      const toyLikes = document.createElement('p');
-      const toyLikeBtn = document.createElement('button');
-      toyLikeBtn.setAttribute("class", "like-btn")
+        const toyImage = document.createElement('img');
+        toyImage.setAttribute("class", "toy-avatar")
 
-      card.appendChild(toyName);
-      card.appendChild(toyImage);
-      card.appendChild(toyLikes);
-      card.appendChild(toyLikeBtn);
-      document.getElementById('toy-collection').appendChild(card);
+        const toyLikes = document.createElement('p');
+        const toyLikeBtn = document.createElement('button');
+        toyLikeBtn.setAttribute("class", "like-btn");
 
-      toyName.innerText = toy.name
-      toyImage.src = toy.image
-      toyImage.class = "toy-avatar"
-      toyLikes.innerText = toy.likes + " Likes"   
-      toyLikeBtn.innerText = "Like <3"
-      debugger;
+        card.appendChild(toyName);
+        card.appendChild(toyImage);
+        card.appendChild(toyLikes);
+        card.appendChild(toyLikeBtn);
+        document.getElementById('toy-collection').appendChild(card);
+
+        toyName.innerText = toy.name
+        toyImage.src = toy.image
+        toyImage.class = "toy-avatar"
+        toyLikes.innerText = toy.likes + " Likes"   
+        toyLikeBtn.innerText = "Like <3"
+      }
   }
 
 }
