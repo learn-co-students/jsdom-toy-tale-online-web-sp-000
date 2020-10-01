@@ -1,4 +1,5 @@
 let addToy = false;
+const toys = [];
 
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.querySelector("#new-toy-btn");
@@ -15,7 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   getToys();
 
-  document.querySelector('form.add-toy-form').addEventListener('submit', function(e){createToy(e.target)});
+  document.querySelector('form.add-toy-form').addEventListener('submit', function(e){
+    createToy(e.target);
+    e.preventDefault();
+  });
 
 });
 
@@ -82,7 +86,7 @@ function createToy(toyData){
           return response.json();
       })
       .then(function(json) {
-          json.push(newToy);
+          toys.push(json);
       })
       .catch(function(error) {
           alert("Error! Please retry again.");
