@@ -36,9 +36,13 @@ function renderToys(toyCollection){
   for (const toy of toyCollection){
       const card = document.createElement('div.card');
       const toyName = document.createElement('h2');
+
       const toyImage = document.createElement('img');
+      toyImage.setAttribute("class", "toy-avatar")
+
       const toyLikes = document.createElement('p');
-      const toyLikeBtn = document.createElement('button')
+      const toyLikeBtn = document.createElement('button');
+      toyLikeBtn.setAttribute("class", "like-btn")
 
       card.appendChild(toyName);
       card.appendChild(toyImage);
@@ -49,7 +53,8 @@ function renderToys(toyCollection){
       toyName.innerText = toy.name
       toyImage.src = toy.image
       toyImage.class = "toy-avatar"
-      toyLikes.innerText = toy.likes    
+      toyLikes.innerText = toy.likes + " Likes"   
+      toyLikeBtn.innerText = "Like <3"
       debugger;
   }
 
