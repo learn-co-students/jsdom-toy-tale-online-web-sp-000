@@ -73,22 +73,16 @@ function createToy(toyData){
       "Content-Type": "application/json",
       "Accept": "application/json"
       },
-      body: JSON.stringify(toyData)
-
+      body: JSON.stringify({name: toyData.name.value, image: toyData.image.value, likes: 0})
   };
   
-  debugger;
+
   return fetch("http://localhost:3000/toys", configToy)
       .then(function(response) {
           return response.json();
       })
-      .then(function(object) {
-          newToy = {}
-          newToy.id = object.length
-          newToy.name = toyData.name;
-          newToy.image = toyData.image;
-          newToy.likes = 0;
-          object.push(newToy);
+      .then(function(json) {
+          json.push(newToy);
       })
       .catch(function(error) {
           alert("Error! Please retry again.");
