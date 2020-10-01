@@ -121,7 +121,6 @@ function increaseLikes(toyData){
   })
   .then(function(json) {
       toyData.target.parentElement.querySelector('p').innerText[0] = `${newNumber} + " Likes`
-      //toys.push(json);
   })
   .catch(function(error) {
       alert("Error! Please retry again.");
