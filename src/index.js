@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+
+
+
 function getToys(){
 
   return fetch("http://localhost:3000/toys")
@@ -51,6 +55,9 @@ function renderToys(toyCollection){
         const toyLikes = document.createElement('p');
         const toyLikeBtn = document.createElement('button');
         toyLikeBtn.setAttribute("class", "like-btn");
+        toyLikeBtn.addEventListener('click', function(e){
+          increaseLikes(e);
+        });
 
         card.appendChild(toyName);
         card.appendChild(toyImage);
@@ -95,46 +102,31 @@ function createToy(toyData){
 }
 
 
+function increaseLikes(toyData){
 
-// function createToy(name, image, likes){
-  
-//   let configObj = {
-//     method: "POST",
-//     headers: {
-//     "Content-Type": "application/json",
-//     "Accept": "application/json"
-//     },
-//     body: JSON.stringify({name, image, likes})
-//   };
+  const newNumber = parseInt(toyData.target.parentElement.querySelector('p').innerText[0]) + 1
 
-//   return fetch("http://localhost:3000/toys", configObj)
-//       .then(function(response) {
-//           return response.json();
-//       })
-//       .then(function(object) {
-//           const toyCollection = document.getElementById('toy-collection')
-//           const card = document.createElement('div.card');
-//           const toyName = document.createElement('h2');
-//           const toyImage = document.createElement('img');
-//           const toyLikes = document.createElement('p');
-//           const toyLikeBtn = document.createElement('button')
+  let configToy = {
+    method: "PATCH",
+    headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+    },
+    body: JSON.stringify({likes: newNumber})
+};  
 
-//           card.appendChild(toyName);
-//           card.appendChild(toyImage);
-//           card.appendChild(toyLikes);
-//           card.appendChild(toyLikeBtn);
-//           toyCollection.appendChild(card);
+  return fetch(`http://localhost:3000/toys/${event.target.id}`, configToy)
+  .then(function(response) {
+      return response.json();
+  })
+  .then(function(json) {
+      toyData.target.parentElement.querySelector('p').innerText[0] = `${newNumber} + " Likes`
+      //toys.push(json);
+  })
+  .catch(function(error) {
+      alert("Error! Please retry again.");
+      document.body.innerHTML = error.message;
+  });
+}
 
-//           document.getElementsByName('toyName') = object.name
-//           document.getElementsByName('toyImage') = object.image
-//           document.getElementsByName('toyLikes') = object.likes
-
-//           t
-
-//       })
-//       .catch(function(error) {
-//           alert("Error! Please retry again.");
-//           document.body.innerHTML = error.message;
-//       });
-//   }
 
