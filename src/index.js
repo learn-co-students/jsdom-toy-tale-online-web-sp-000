@@ -85,6 +85,7 @@ function createToy(toyData){
           json.push(newToy);
       })
       .catch(function(error) {
+          debugger;
           alert("Error! Please retry again.");
           document.body.innerHTML = error.message;
       });
