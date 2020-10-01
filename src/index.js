@@ -15,8 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   getToys();
 
-});
+  document.querySelector('form.add-toy-form').addEventListener('submit', function(e){createToy(e.target)});
 
+});
 
 
 function getToys(){
@@ -29,6 +30,7 @@ function getToys(){
           renderToys(json)
       })
 }
+
 
 
 function renderToys(toyCollection){
@@ -60,6 +62,38 @@ function renderToys(toyCollection){
       }
   }
 
+}
+
+
+function createToy(toyData){
+    
+  let configToy = {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+      },
+      body: JSON.stringify(toyData)
+
+  };
+  
+  debugger;
+  return fetch("http://localhost:3000/toys", configToy)
+      .then(function(response) {
+          return response.json();
+      })
+      .then(function(object) {
+          newToy = {}
+          newToy.id = object.length
+          newToy.name = toyData.name;
+          newToy.image = toyData.image;
+          newToy.likes = 0;
+          object.push(newToy);
+      })
+      .catch(function(error) {
+          alert("Error! Please retry again.");
+          document.body.innerHTML = error.message;
+      });
 }
 
 
