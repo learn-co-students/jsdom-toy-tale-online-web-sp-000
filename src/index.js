@@ -46,10 +46,11 @@ function renderToys(toyCollection){
       card.appendChild(toyLikeBtn);
       document.getElementById('toy-collection').appendChild(card);
 
-      document.getElementsByName('toyName').innerText = object.name
-      document.getElementsByName('toyImage').src = object.image
-      document.getElementsByName('toyImage').class = "toy-avatar"
-      document.getElementsByName('toyLikes').innerText = object.likes    
+      toyName.innerText = toy.name
+      toyImage.src = toy.image
+      toyImage.class = "toy-avatar"
+      toyLikes.innerText = toy.likes    
+      debugger;
   }
 
 }
