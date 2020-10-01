@@ -113,19 +113,19 @@ function increaseLikes(toyData){
     "Accept": "application/json"
     },
     body: JSON.stringify({likes: newNumber})
-};  
+  };  
 
-  return fetch(`http://localhost:3000/toys/${event.target.id}`, configToy)
-  .then(function(response) {
-      return response.json();
-  })
-  .then(function(json) {
-      toyData.target.parentElement.querySelector('p').innerText[0] = `${newNumber} + " Likes`
-  })
-  .catch(function(error) {
-      alert("Error! Please retry again.");
-      document.body.innerHTML = error.message;
-  });
+  return fetch(`http://localhost:3000/toys/${toyData.target.id}`, configToy)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(json) {
+        toyData.target.parentElement.querySelector('p').innerText[0] = `${newNumber} + " Likes`
+    })
+    .catch(function(error) {
+        alert("Error! Please retry again.");
+        document.body.innerHTML = error.message;
+    });
 }
 
 
