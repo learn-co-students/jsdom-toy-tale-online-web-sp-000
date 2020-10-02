@@ -25,9 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
 function getToys(){
 
   return fetch("http://localhost:3000/toys")
@@ -55,6 +52,7 @@ function renderToys(toyCollection){
         const toyLikes = document.createElement('p');
         const toyLikeBtn = document.createElement('button');
         toyLikeBtn.setAttribute("class", "like-btn");
+        toyLikeBtn.setAttribute('id', toy.id);
         toyLikeBtn.addEventListener('click', function(e){
           increaseLikes(e);
         });
