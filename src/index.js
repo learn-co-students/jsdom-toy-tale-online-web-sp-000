@@ -34,18 +34,19 @@ function card(json){
     img.setAttribute("src", toys.image)
     img.setAttribute("class", "toy-avatar")
     let likebutton=document.createElement("button")
-    likebutton.className="Like"
+    likebutton.className="like"
     likebutton.addEventListener('click',(e) => {
       console.log(e.target.dataset);
       addLikes(e)})
     likebutton.style = "width: 30px;height:30px;cursor:pointer;"
     likebutton.innerText = "♥"
+    likebutton.id = toys.id
     
     let div=document.createElement("div")
     div.setAttribute("class", "card")
     div.append(h2)
-    div.append(p)
     div.appendChild(img)
+    div.append(p)
     div.append(likebutton)
   addNewToy.appendChild(div)})}
 
@@ -95,6 +96,7 @@ function card(json){
   
    function addLikes(event){
      event.preventDefault()
+     console.log("addlike", event.target.previousElementSibling)
      let woody=  parseInt(event.target.previousElementSibling.innerText)+1
      //let rex = event.target.parentElement.dataset.id
        fetch(`http://localhost:3000/toys/${event.target.id}`,{
@@ -108,8 +110,8 @@ function card(json){
           })
         })
         .then(res => res.json())
-       // .then((toy=>{event.target.previousElementSibling.innerText=`${toy} likes`})
-       .then((toy=>{console.log(toy)})
+        .then((toy=>{event.target.previousElementSibling.innerText=`${woody} likes`})
+       //.then((toy=>{console.log(toy)})
         )}
 
       
