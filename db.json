@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": 9
     },
     {
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 8
+      "likes": 10
     },
     {
       "id": 3,
@@ -47,6 +47,24 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Zoey",
+      "image": "https://avatars0.githubusercontent.com/u/35386274?s=460&u=2735622fd46d59f6fa8b89bca664837579f2e2d7&v=4",
+      "likes": 21,
+      "id": 9
+    },
+    {
+      "name": "Mikel",
+      "image": "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/50668217_10218647583807636_8635069673169223680_o.jpg?_nc_cat=100&ccb=2&_nc_sid=09cbfe&_nc_ohc=T24vvJmdm5QAX8fbV6B&_nc_ht=scontent-lax3-1.xx&oh=da17f68e615bb83dc8672b437c821b82&oe=5FD01124",
+      "likes": 10,
+      "id": 10
+    },
+    {
+      "name": "Ryan",
+      "image": "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/11252760_10152785646731820_2647440938020941817_n.jpg?_nc_cat=105&ccb=2&_nc_sid=09cbfe&_nc_ohc=mDWJ0HqfxJoAX9gkTIl&_nc_ht=scontent-lax3-1.xx&oh=78736b203b193bf963171839955f179f&oe=5FD10B9A",
+      "likes": 8,
+      "id": 11
     }
   ]
 }
