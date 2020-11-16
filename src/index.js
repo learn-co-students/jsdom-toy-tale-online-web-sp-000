@@ -3,7 +3,14 @@ let addToy = false;
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
+  const toyForm = document.getElementsByClassName("add-toy-form")[0];
   const toyCollection = document.getElementById("toy-collection");
+  
+  toyForm.addEventListener("submit", e => {
+    e.preventDefault();
+    addNewToy(e.target);
+  })
+
   addBtn.addEventListener("click", () => {
     // hide & seek with the form
     addToy = !addToy;
@@ -32,7 +39,7 @@ function getToyData(object) {
 }
 
 function createToyCard(data) {
-  console.log(data)
+  // console.log(data)
   let div = document.createElement("div");
   div.setAttribute("class", "card");
   let name = data.name;
@@ -61,8 +68,8 @@ function createToyCard(data) {
 }
 
 function addLike(id) {
-  const likes_element = document.getElementById(`${id}_likes`)
-  let likes = likes_element.innerText
+  const likes_element = document.getElementById(`${id}-likes`)
+  let likes = likes_element.innerHTML
   let array = likes.split(" ")
   let i = parseInt(array[0])
   i++
@@ -76,6 +83,34 @@ function addLike(id) {
       "likes": i
     })
   })
-  likes_element.innerText = `${likes} likes`
+  likes_element.innerHTML = `${i} likes`
 }
+
+function addNewToy(form) {
+  let inputs = document.getElementsByClassName("input-text")
+  let newName = inputs[0].value
+  let newURL = inputs[1].value
+  return fetch("http://localhost:3000/toys", {
+    method: "POST",
+    headers: 
+    {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },  
+    body: JSON.stringify({
+      "name": newName,
+      "image": newURL,
+      "likes": 0
+    })
+  })
+  .then(function(response) {
+      return response.json();
+  })
+  .then(function(object) {
+    createToyCard(object);
+  })
+  .catch(function(error) {
+  })
+}
+
 });
