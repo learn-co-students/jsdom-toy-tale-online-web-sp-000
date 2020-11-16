@@ -32,6 +32,7 @@ function getToyData(object) {
 }
 
 function createToyCard(data) {
+  console.log(data)
   let div = document.createElement("div");
   div.setAttribute("class", "card");
   let name = data.name;
@@ -60,7 +61,8 @@ function createToyCard(data) {
 }
 
 function addLike(id) {
-  let likes = document.getElementById(`${id}-likes`)
+  const likes_element = document.getElementById(`${id}_likes`)
+  let likes = likes_element.innerText
   let array = likes.split(" ")
   let i = parseInt(array[0])
   i++
@@ -74,6 +76,6 @@ function addLike(id) {
       "likes": i
     })
   })
-  document.getElementById(`${id}_likes`).textContent = `${likes} likes`
+  likes_element.innerText = `${likes} likes`
 }
 });
