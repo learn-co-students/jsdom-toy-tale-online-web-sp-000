@@ -99,7 +99,8 @@ function renderToy(toy) {
 
 
 // like button listener
-function likeIncrementer(e){
+// --> set when we make button for the card
+function likeIncrementer( e ){
   e.preventDefault()
   // calling to server to get the previous like #, dont use a closure
 
@@ -127,7 +128,7 @@ function likeIncrementer(e){
       })
 }
 
-// This Function Call Starts Program! 
+// This Function Call Starts Program
 
 // pass each toy to renderToys() fn
 // got toys from fetch call to /toys aka index aka `Toys.all`  
@@ -137,15 +138,14 @@ getToys().then( toys => {
  })
 });
 
-/*
 
+
+
+/*
 DURING STEP 1.  - MVP to get boxes up -> create a Toy Card - container div
 function renderToy(toy) {
   let divCard = document.createElement('div') // create div el
   divCard.setAttribute('class', 'card') // add className to div
   divToyCollection.appendChild(divCard)// append obj to card
 }
-
-
-
 */ 
