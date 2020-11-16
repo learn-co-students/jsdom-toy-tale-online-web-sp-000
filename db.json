@@ -4,13 +4,13 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": 6
     },
     {
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 8
+      "likes": 10
     },
     {
       "id": 3,
@@ -46,7 +46,37 @@
       "id": 8,
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
-      "likes": -2
+      "likes": -1
+    },
+    {
+      "name": "Maude",
+      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.target.com%2Fp%2Fb-toys-interactive-plush-cat-wobble-8217-n-8217-go-lolo%2F-%2FA-76155803&psig=AOvVaw2iB799wThdHfQV47nvhrem&ust=1605603563398000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKDHkbLZhu0CFQAAAAAdAAAAABAI",
+      "likes": 1,
+      "id": 9
+    },
+    {
+      "name": "Maude",
+      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.target.com%2Fp%2Fb-toys-interactive-plush-cat-wobble-8217-n-8217-go-lolo%2F-%2FA-76155803&psig=AOvVaw2iB799wThdHfQV47nvhrem&ust=1605603563398000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKDHkbLZhu0CFQAAAAAdAAAAABAI",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "Sploot",
+      "image": "https://images.app.goo.gl/tNiYw8uL7WHnyLLX7",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "name": "Sploot",
+      "image": "https://images.app.goo.gl/tNiYw8uL7WHnyLLX7",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "name": "Sploot",
+      "image": "https://images.app.goo.gl/tNiYw8uL7WHnyLLX7",
+      "likes": 0,
+      "id": 13
     }
   ]
 }
