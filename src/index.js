@@ -26,14 +26,22 @@ function appendDiv(toy){
   const container = document.querySelector("#toy-collection");
   const newDiv = document.createElement("div");
   newDiv.classList.add('card');
-  container.appendChild(newDiv)
+  container.appendChild(newDiv);
   appendHeading(toy, container);
+  appendImage(toy, container);
 }
 
 function appendHeading(toy, container){
   const newHeading = document.createElement("h2");
   newHeading.innerHTML = toy.name
-  container.appendChild(newHeading)
+  container.appendChild(newHeading);
+}
+
+function appendImage(toy, container){
+  const newImage = document.createElement("img");
+  newImage.classList.add('toy-avatar');
+  newImage.src = toy.image
+  container.appendChild(newImage);
 }
 
 
