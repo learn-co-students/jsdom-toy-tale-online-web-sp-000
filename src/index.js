@@ -27,21 +27,36 @@ function appendDiv(toy){
   const newDiv = document.createElement("div");
   newDiv.classList.add('card');
   container.appendChild(newDiv);
-  appendHeading(toy, container);
-  appendImage(toy, container);
+  appendHeading(toy, newDiv);
+  appendImage(toy, newDiv);
+  appendLike(toy, newDiv);
+  appendButton(newDiv);
 }
 
-function appendHeading(toy, container){
+function appendHeading(toy, newDiv){
   const newHeading = document.createElement("h2");
   newHeading.innerHTML = toy.name
-  container.appendChild(newHeading);
+  newDiv.appendChild(newHeading);
 }
 
-function appendImage(toy, container){
+function appendImage(toy, newDiv){
   const newImage = document.createElement("img");
   newImage.classList.add('toy-avatar');
   newImage.src = toy.image
-  container.appendChild(newImage);
+  newDiv.appendChild(newImage);
+}
+
+function appendLike(toy, newDiv){
+  const newLike = document.createElement("p");
+  newLike.innerHTML = `${toy.likes} likes`
+  newDiv.appendChild(newLike);
+}
+
+function appendButton(newDiv){
+  const newButton = document.createElement("button");
+  newButton.classList.add('like-btn');
+  newButton.innerHTML = "like <3"
+  newDiv.appendChild(newButton);
 }
 
 
