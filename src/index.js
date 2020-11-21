@@ -79,17 +79,14 @@ const configObj = {
 const addToyForm = document.querySelector(".add-toy-form");
 addToyForm.addEventListener('submit', function(event) {
   event.preventDefault()
-  const toyName = event.target.name.value
-  const toyImage = event.target.image.value
-  // console.log("toyForm", event.target.name.value)
+  const formName = event.target.name.value
+  const formImage = event.target.image.value
 })
 
-// function collectData() {
-
 const formData = {
-  toyName: 
-  
-}
+  toyName: formName,
+  toyImage: formImage
+};
 
 
 
