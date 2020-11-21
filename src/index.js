@@ -1,3 +1,7 @@
+// JS MANTRA:
+// When some event happens, I want to make what kind of request and then manipulate the DOM in what way?
+
+
 let addToy = false;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -57,6 +61,34 @@ function appendButton(newDiv){
   newButton.classList.add('like-btn');
   newButton.innerHTML = "like <3"
   newDiv.appendChild(newButton);
+}
+
+function postToy (){
+  fetch("http://localhost:3000/toys",configObj)
+}
+
+const configObj = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  body: JSON.stringify(formData)
+};
+
+const addToyForm = document.querySelector(".add-toy-form");
+addToyForm.addEventListener('submit', function(event) {
+  event.preventDefault()
+  const toyName = event.target.name.value
+  const toyImage = event.target.image.value
+  // console.log("toyForm", event.target.name.value)
+})
+
+// function collectData() {
+
+const formData = {
+  toyName: 
+  
 }
 
 
