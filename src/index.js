@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   // make a 'GET' request to fetch all the toy objects
-  let toyCollection = document.querySelector("#toy-collection");
   let destUrl = "http://localhost:3000/toys";
   let toyData = {
     id: "",
@@ -29,11 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     body: JSON.stringify(toyData)
   }
-  fetch(destUrl, configObj)
-    .then(function(response) {
-      return JSON.response();
-    })
-    .then(function(toyObj) {
-      toyCollection.append(toyObj);
-    });
+  fetch(destUrl)
+    .then(response => response.json())
+    .then(json => renderToys(json));
 });
+
+function renderToys(json) {
+  const toyCollection = document.querySelector("#toy-collection");
+  json.forEach(toy => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `${toy.name}`;
+    toyCollection.appendChild(card);
+  })
+}
