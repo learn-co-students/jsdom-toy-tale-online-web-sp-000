@@ -45,7 +45,7 @@ function renderToys(json) {
 function addToyInfo(card, toy) {
     card.className = "card";
     card.innerHTML = `<h2>${toy.name}</h2>`;
-    card.innerHTML += `<img class="toy-avatar" src="${toy.image}">`;
-    card.innerHTML += `<p>${toy.likes}</p>`;
-    card.innerHTML += `<button class="like-btn"></button>`;
+    card.innerHTML += `<img src="${toy.image}" class="toy-avatar">`;
+    card.innerHTML += `<p>${toy.likes} Likes </p>`;
+    card.innerHTML += `<button class="like-btn">Like <3</button>`;
 }
