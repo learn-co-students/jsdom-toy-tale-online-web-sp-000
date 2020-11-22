@@ -79,6 +79,7 @@ function postToy (formData){
     const name = json.name
     const image = json.image
     postNewToy(name, image);
+    console.log(name, image)
   })
 }
 
@@ -99,13 +100,17 @@ function addEventListenerToToyForm() {
 function postNewToy(name, image) {
   const container = document.querySelector("#toy-collection");
   const newDiv = document.createElement("div");
+
   newDiv.classList.add('card');
   container.appendChild(newDiv);
+  // name
   const newToyName = document.createElement("h2");
   newToyName.innerHTML = name
   newDiv.appendChild(newToyName);
-  const newImageName = document.createElement("h2");
-  newImageName.innerHTML = image
+  // image
+  const newImageName = document.createElement("img");
+  newImageName.classList.add('toy-avatar');
+  newImageName.src = image
   newDiv.appendChild(newImageName);
 }
 
