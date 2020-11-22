@@ -12,28 +12,47 @@ document.addEventListener("DOMContentLoaded", () => {
             toyFormContainer.style.display = "none";
         }
     });
-    // make a 'GET' request to fetch all the toy objects
     let destUrl = "http://localhost:3000/toys";
-    let toyData = {
-        id: "",
-        name: "",
-        image: "",
-        likes: ""
-    };
-    let configObj = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(toyData)
-    }
+    const submitBtn = document.querySelector(".submit");
+    const toyForm = document.querySelector(".add-toy-form");
+    // Make a 'GET' request to fetch all the toy objects
     fetch(destUrl)
         .then(response => response.json())
-        .then(json => renderToys(json));
+        .then(json => addToys(json));
+
+    // Send POST request using fetch, adding new toy to collection
+    submitBtn.addEventListener("click", function(event) {
+        let nameInput = toyForm[0].value;
+        let imgInput = toyForm[1].value;
+
+        let toyData = {
+            name: `${nameInput}`,
+            image: `${imgInput}`,
+            likes: 0
+        };
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(toyData)
+        };
+        fetch(destUrl, configObj)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(toyObj) {
+                // Add new toy object
+                addToys(toyObj);
+            })
+            .catch(function(error) {
+                console.log(error.message);
+            });
+    });
 });
 
-function renderToys(json) {
+function addToys(json) {
     const toyCollection = document.querySelector("#toy-collection");
     json.forEach(toy => {
         const card = document.createElement("div");
