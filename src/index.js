@@ -6,6 +6,7 @@ let addToy = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchToys();
+  addEventListenerToToyForm();
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
   addBtn.addEventListener("click", () => {
@@ -63,30 +64,49 @@ function appendButton(newDiv){
   newDiv.appendChild(newButton);
 }
 
-function postToy (){
+function postToy (formData){
+  const configObj = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(formData)
+  };
   fetch("http://localhost:3000/toys",configObj)
+  .then(response => response.json())
+  .then(json => {
+    const name = json.name
+    const image = json.image
+    postNewToy(name, image);
+  })
 }
 
-const configObj = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-  },
-  body: JSON.stringify(formData)
-};
+function addEventListenerToToyForm() {
+  const addToyForm = document.querySelector(".add-toy-form");
+  addToyForm.addEventListener('submit', function(event) {
+    event.preventDefault()
+    const formName = event.target.name.value
+    const formImage = event.target.image.value
+    const formData = {
+      name: formName,
+      image: formImage
+    };
+    postToy(formData);
+  });
+}
 
-const addToyForm = document.querySelector(".add-toy-form");
-addToyForm.addEventListener('submit', function(event) {
-  event.preventDefault()
-  const formName = event.target.name.value
-  const formImage = event.target.image.value
-})
-
-const formData = {
-  toyName: formName,
-  toyImage: formImage
-};
-
+function postNewToy(name, image) {
+  const container = document.querySelector("#toy-collection");
+  const newDiv = document.createElement("div");
+  newDiv.classList.add('card');
+  container.appendChild(newDiv);
+  const newToyName = document.createElement("h2");
+  newToyName.innerHTML = name
+  newDiv.appendChild(newToyName);
+  const newImageName = document.createElement("h2");
+  newImageName.innerHTML = image
+  newDiv.appendChild(newImageName);
+}
 
 
