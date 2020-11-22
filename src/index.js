@@ -73,25 +73,29 @@ function postToy (formData){
     },
     body: JSON.stringify(formData)
   };
+  
   fetch("http://localhost:3000/toys",configObj)
   .then(response => response.json())
   .then(json => {
     const name = json.name
     const image = json.image
     postNewToy(name, image);
-    console.log(name, image)
   })
 }
 
 function addEventListenerToToyForm() {
   const addToyForm = document.querySelector(".add-toy-form");
+
   addToyForm.addEventListener('submit', function(event) {
     event.preventDefault()
+
     const formName = event.target.name.value
     const formImage = event.target.image.value
+    
     const formData = {
       name: formName,
-      image: formImage
+      image: formImage,
+      likes: 0
     };
     postToy(formData);
   });
@@ -112,6 +116,12 @@ function postNewToy(name, image) {
   newImageName.classList.add('toy-avatar');
   newImageName.src = image
   newDiv.appendChild(newImageName);
+  // like
+  const newLike = document.createElement("p");
+  newLike.innerHTML = `${likes} likes`
+  newDiv.appendChild(newLike);
+  // button
+  appendButton(newDiv);
 }
 
 
