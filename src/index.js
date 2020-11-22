@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let destUrl = "http://localhost:3000/toys";
     const submitBtn = document.querySelector(".submit");
     const toyForm = document.querySelector(".add-toy-form");
+    const likeBtn = document.querySelector(".like-btn");
     // Make a 'GET' request to fetch all the toy objects
     fetch(destUrl)
         .then(response => response.json())
@@ -50,6 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(error.message);
             });
     });
+    // When user clicks on like button add likes to toy
+    // likeBtn.addEventListener("click", () => {
+
+    // });
 });
 
 function addToys(json) {
