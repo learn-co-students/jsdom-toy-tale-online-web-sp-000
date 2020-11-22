@@ -136,9 +136,9 @@ function postNewToy(name, image, likes) {
 
 
 function increaseToyLikes() {
-  const buttonClass = document.querySelector(".like-btn");
-  // const counter = 
-  console.log(buttonClass)
+  const toyCollection = document.querySelector("#toy-collection");
+  const toyButton = toyCollection.querySelector(".like-btn");
+  console.log(toyButton)
   // buttonClass.addEventListener('submit', function(event) {
   //   event.preventDefault();
   //   console.log("it clicks")
