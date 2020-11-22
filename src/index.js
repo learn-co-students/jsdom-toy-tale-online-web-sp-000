@@ -7,6 +7,7 @@ let addToy = false;
 document.addEventListener("DOMContentLoaded", () => {
   fetchToys();
   addEventListenerToToyForm();
+  increaseToyLikes();
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
   addBtn.addEventListener("click", () => {
@@ -79,7 +80,8 @@ function postToy (formData){
   .then(json => {
     const name = json.name
     const image = json.image
-    postNewToy(name, image);
+    const likes = json.likes
+    postNewToy(name, image, likes);
   })
 }
 
@@ -87,7 +89,7 @@ function addEventListenerToToyForm() {
   const addToyForm = document.querySelector(".add-toy-form");
 
   addToyForm.addEventListener('submit', function(event) {
-    event.preventDefault()
+    event.preventDefault();
 
     const formName = event.target.name.value
     const formImage = event.target.image.value
@@ -101,7 +103,7 @@ function addEventListenerToToyForm() {
   });
 }
 
-function postNewToy(name, image) {
+function postNewToy(name, image, likes) {
   const container = document.querySelector("#toy-collection");
   const newDiv = document.createElement("div");
 
@@ -122,6 +124,26 @@ function postNewToy(name, image) {
   newDiv.appendChild(newLike);
   // button
   appendButton(newDiv);
+}
+
+
+// when user clicks like button
+// 1. conditional increase to toy's like without reloading
+// event listener to listen to the button when it is submitted
+// add the like number right away to the front end, use a +1 counter
+// 2. patch request sent to server updating number
+// using the front end number to update the backend
+
+
+function increaseToyLikes() {
+  const buttonClass = document.querySelector(".like-btn");
+  // const counter = 
+  console.log(buttonClass)
+  // buttonClass.addEventListener('submit', function(event) {
+  //   event.preventDefault();
+  //   console.log("it clicks")
+  //   // const addLike = parseInt(counter.textContent++, 10);
+  // })
 }
 
 
