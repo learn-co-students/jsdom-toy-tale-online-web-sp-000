@@ -68,6 +68,7 @@ function addToys(json) {
 
 function addToyInfo(card, toy) {
     card.className = "card";
+    card.dataset.id = toy.id;
     card.innerHTML = `<h2>${toy.name}</h2>`;
     card.innerHTML += `<img src="${toy.image}" class="toy-avatar">`;
     card.innerHTML += `<p>${toy.likes} Likes </p>`;
