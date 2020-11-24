@@ -126,15 +126,6 @@ function postNewToy(name, image, likes) {
   appendButton(newDiv);
 }
 
-
-// when user clicks like button
-// 1. conditional increase to toy's like without reloading
-// event listener to listen to the button when it is submitted
-// add the like number right away to the front end, use a +1 counter
-// 2. patch request sent to server updating number
-// using the front end number to update the backend
-
-
 function increaseToyLikes() {
   const toyCollection = document.querySelector("#toy-collection");
   toyCollection.addEventListener("click", (event) => {
