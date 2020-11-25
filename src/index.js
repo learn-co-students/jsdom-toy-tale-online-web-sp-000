@@ -8,8 +8,107 @@ document.addEventListener("DOMContentLoaded", () => {
     addToy = !addToy;
     if (addToy) {
       toyFormContainer.style.display = "block";
+      toyFormContainer.addEventListener('submit', event => {
+        event.preventDefault()
+        newToy(event.target)
+      })
     } else {
       toyFormContainer.style.display = "none";
     }
   });
 });
+
+const toyUrl = "http://localhost:3000/toys"
+const toyBox = document.querySelector('#toy-collection')
+
+  function fetchToys() {
+    fetch(toyUrl)
+    .then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      console.log(json)
+      renderToys(json)
+    })
+  }
+
+  function renderToys(toys) { 
+    console.log(toys)
+    toys.forEach(toy => {
+        renderToy(toy)
+      })
+  }
+  
+  function renderToy(toy) { 
+    console.log(toy)
+
+    let h2 = document.createElement('h2')
+    h2.innerText = toy.name
+
+    let img = document.createElement('img')
+    img.src = toy.image
+    img.setAttribute('class', 'toy-avatar')
+
+    let p = document.createElement('p')
+    p.innerText = toy.likes + " likes"
+
+    let btn = document.createElement('button')
+    btn.setAttribute('class', 'like-btn')
+    btn.setAttribute('id', toy.id)
+    btn.innerText = "Like"
+    btn.addEventListener('click', (e) => {
+      console.log(e.target.dataset);
+      likes(e)
+    })
+
+    let divCard = document.createElement('div')
+    divCard.setAttribute('class', 'card')
+    divCard.append(h2, img, p, btn)
+    toyBox.append(divCard)
+
+  }
+
+  function newToy(new_toy) {
+    fetch("http://localhost:3000/toys", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        "name": new_toy.name.value,
+        "image": new_toy.image.value,
+        "likes": 0
+      })
+    })
+    .then(response => response.json())
+    .then((obj_toy) => {
+      let new_toy = renderToy(obj_toy)
+      toyBox.append(new_toy)
+    })
+  }
+
+  function likes(e) {
+    e.preventDefault()
+    let more = parseInt(e.target.previousElementSibling.innerText) + 1
+  
+    fetch(`http://localhost:3000/toys/${e.target.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+  
+        },
+        body: JSON.stringify({
+          "likes": more
+        })
+      })
+      .then(res => res.json())
+      .then((like_obj => {
+        e.target.previousElementSibling.innerText = `${more} likes`;
+      }))
+  }
+  
+
+  document.addEventListener('DOMContentLoaded', function() {
+    fetchToys()
+  })
