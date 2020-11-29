@@ -25,6 +25,11 @@ function collectToys() {
         liked.textContent = `${data[checkToy].likes} likes`;
         card.appendChild(liked);
 
+        let button  = document.createElement("button");
+        button.setAttribute('class', 'like-btn');
+        button.textContent = `Like <3`;
+        card.appendChild(button);
+
         toyBox.appendChild(card);
       }
       
