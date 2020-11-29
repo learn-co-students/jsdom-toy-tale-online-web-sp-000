@@ -29,12 +29,6 @@ function collectToys() {
         button.setAttribute('data-id', `${data[checkToy].id}`);
         card.appendChild(button);
         
-        // button.addEventListener("click", function(event) {
-        //   event.preventDefault();
-        //   console.log("I've been chosen");
-        //   addLikeToToy(checkToy, data[checkToy].likes);
-        // });
-
         toyBox.appendChild(card);
       }
       
