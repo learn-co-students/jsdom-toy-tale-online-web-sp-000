@@ -1,14 +1,12 @@
 let addToy = false;
 const toyBox = document.getElementById("toy-collection");
+let likebtn = document.querySelectorAll(".like-button");
 
 function collectToys() {
   return fetch('http://localhost:3000/toys')
     .then(function(response) {return response.json()})
     .then(function(data) {
       for (const checkToy in data) {
-        console.log(data[checkToy]);
-        console.log(data[checkToy].name);
-
         let card = document.createElement("div");
         card.setAttribute('class', 'card');
         
@@ -25,15 +23,17 @@ function collectToys() {
         liked.textContent = `${data[checkToy].likes} likes`;
         card.appendChild(liked);
 
-        let button  = document.createElement("button");
+        let button = document.createElement("button");
         button.setAttribute('class', 'like-btn');
         button.textContent = `Like <3`;
+        button.setAttribute('data-id', `${data[checkToy].id}`);
         card.appendChild(button);
         
-        button.addEventListener("click", () => {
-          console.log("I've been chosen");
-          addLikeToToy(checkToy);
-        });
+        // button.addEventListener("click", function(event) {
+        //   event.preventDefault();
+        //   console.log("I've been chosen");
+        //   addLikeToToy(checkToy, data[checkToy].likes);
+        // });
 
         toyBox.appendChild(card);
       }
@@ -43,7 +43,6 @@ function collectToys() {
 }
 
 function addNewToy(toyName, toyImage) {
-  console.log("addNewToy: NewToy attempting joining!");
   let formData = {
     name: toyName,
     image: toyImage,
@@ -68,10 +67,10 @@ function addNewToy(toyName, toyImage) {
   });
 }
 
-function addLikeToToy(id) {
-  console.log("addLikeToToy: add a like!");
+function addLikeToToy(id, likes) {
+  id = parseInt(id) + 1;
   let formData = {
-    likes: 4
+    likes: likes += 1
   };
    
   let configObj = {
@@ -85,11 +84,13 @@ function addLikeToToy(id) {
    
   return fetch(`http://localhost:3000/toys/${id}`, configObj)
   .then(function(response) {
-    console.log(response);
     return response.json();
   })
   .then(function(object) {
-    console.log(object);
+  })
+  .catch(function(error) {
+    alert("Bad");
+    console.log(error.message);
   });
 }
 
@@ -109,6 +110,33 @@ document.addEventListener("DOMContentLoaded", () => {
   newToy.addEventListener("click", function(event) {
     event.preventDefault();
     addNewToy(toyName.value, toyImage.value);
+  });
+
+  toyBox.addEventListener("click", (e) => {
+    if(e.target.className === "like-btn"){
+             
+      console.log(e.target);
+      let currentLikes = 
+      parseInt(e.target.previousElementSibling.innerText);
+      let newLikes = currentLikes + 1;
+      e.target.previousElementSibling.innerText = newLikes + " likes"
+      fetch(`http://localhost:3000/toys/${e.target.dataset.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          likes: currentLikes
+        })
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(object) {
+        console.log(object);
+      })
+    }
   });
 });
   
