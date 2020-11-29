@@ -29,17 +29,75 @@ function collectToys() {
         button.setAttribute('class', 'like-btn');
         button.textContent = `Like <3`;
         card.appendChild(button);
+        
+        button.addEventListener("click", () => {
+          console.log("I've been chosen");
+          addLikeToToy(checkToy);
+        });
 
         toyBox.appendChild(card);
       }
       
       console.log(`Filled the toyBox`)
     });
-  }
+}
+
+function addNewToy(toyName, toyImage) {
+  console.log("addNewToy: NewToy attempting joining!");
+  let formData = {
+    name: toyName,
+    image: toyImage,
+    likes: 0
+  };
+   
+  let configObj = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(formData)
+  };
+   
+  return fetch("http://localhost:3000/toys", configObj)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(object) {
+    collectToys();
+  });
+}
+
+function addLikeToToy(id) {
+  console.log("addLikeToToy: add a like!");
+  let formData = {
+    likes: 4
+  };
+   
+  let configObj = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(formData)
+  };
+   
+  return fetch(`http://localhost:3000/toys/${id}`, configObj)
+  .then(function(response) {
+    console.log(response);
+    return response.json();
+  })
+  .then(function(object) {
+    console.log(object);
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
+  const newToy = document.getElementById("submit-new-toy");
+
   addBtn.addEventListener("click", () => {
     // hide & seek with the form
     addToy = !addToy;
@@ -47,7 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
       toyFormContainer.style.display = "block";
     } else {
       toyFormContainer.style.display = "none";
-    }
+    }});
+  newToy.addEventListener("click", function(event) {
+    event.preventDefault();
+    addNewToy(toyName.value, toyImage.value);
   });
-  collectToys();
 });
+  
+collectToys();
+

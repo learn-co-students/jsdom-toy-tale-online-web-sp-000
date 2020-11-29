@@ -47,6 +47,36 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Wreck it Ralph",
+      "image": "https://www.vhv.rs/dpng/d/480-4807335_download-wreck-it-ralph-png-hd-wreck-it.png",
+      "liked": 0,
+      "id": 9
+    },
+    {
+      "name": "Evil ralph",
+      "image": "https://www.vhv.rs/dpng/d/480-4807335_download-wreck-it-ralph-png-hd-wreck-it.png",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "Load",
+      "image": "https://www.vhv.rs/dpng/d/480-4807335_download-wreck-it-ralph-png-hd-wreck-it.png",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "name": "This is my friend",
+      "image": "https://www.vhv.rs/dpng/d/480-4807335_download-wreck-it-ralph-png-hd-wreck-it.png",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "name": "This is my friend",
+      "image": "https://www.vhv.rs/dpng/d/480-4807335_download-wreck-it-ralph-png-hd-wreck-it.png",
+      "likes": 0,
+      "id": 13
     }
   ]
 }
