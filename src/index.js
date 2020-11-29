@@ -67,33 +67,6 @@ function addNewToy(toyName, toyImage) {
   });
 }
 
-function addLikeToToy(id, likes) {
-  id = parseInt(id) + 1;
-  let formData = {
-    likes: likes += 1
-  };
-   
-  let configObj = {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify(formData)
-  };
-   
-  return fetch(`http://localhost:3000/toys/${id}`, configObj)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(object) {
-  })
-  .catch(function(error) {
-    alert("Bad");
-    console.log(error.message);
-  });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
@@ -127,14 +100,13 @@ document.addEventListener("DOMContentLoaded", () => {
           "Accept": "application/json"
         },
         body: JSON.stringify({
-          likes: currentLikes
+          likes: newLikes
         })
       })
       .then(function(response) {
         return response.json();
       })
       .then(function(object) {
-        console.log(object);
       })
     }
   });
