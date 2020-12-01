@@ -8,13 +8,36 @@ document.addEventListener("DOMContentLoaded", () => {
   
   function appendToy(newToy) {
     let toy = document.createElement('div')
-      let name = `<h2>name: ${newToy.name} </h2>`
-      let image = `<img src="${newToy.image}" class="toy-avatar"/>`
-      let likes = `<p>likes: ${newToy.likes}</p>`
-      let button = `<button class="like-btn">Like <3</button>`
+    let name = `<h2>name: ${newToy.name} </h2>`
+    let image = `<img src="${newToy.image}" class="toy-avatar"/>`
+    let likes = `<p>likes: ${newToy.likes}</p>`
+    let button = `<button class="like-btn">Like <3</button>`
+    let id = `<p class="id" hidden>${newToy.id}</p>`
+    toy.innerHTML = name + image + likes + button + id
+    toyCollection.appendChild(toy)
+    
+    toy.querySelector('.like-btn').addEventListener('click', function() {
+      let updatedLikes = parseInt(toy.querySelector('p').innerHTML.split(" ")[1]) + 1
+      let id = parseInt(toy.querySelector('.id').innerText)
+      toy.querySelector('p').innerHTML = `likes: ${updatedLikes}`
 
-      toy.innerHTML = name + image + likes + button
-      toyCollection.appendChild(toy)
+      let configObj = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "likes": updatedLikes
+        })
+      }
+
+      fetch(`http://localhost:3000/toys/${id}`, configObj)
+      .then(function(response) {
+        return response.json();
+      })
+
+    })
   }
 
   fetch('http://localhost:3000/toys')
