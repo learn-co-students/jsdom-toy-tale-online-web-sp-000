@@ -149,3 +149,5 @@ function renderToy(toy) {
   divToyCollection.appendChild(divCard)// append obj to card
 }
 */ 
+
+// test
