@@ -14,7 +14,7 @@ function fetchToys(toy_data) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: "application/json"
+        'Accept': "application/json"
       },
       body: JSON.stringify({
         "name": toy_data.name.value,
