@@ -65,9 +65,23 @@ function makeNewToy(data) {
 }
 
 divCollect.addEventListener('click', (e) => {
-  console.log(e.target);
-})
+  if (e.target.className === "like-btn"){
+    let currentLikeCount = parseInt(e.target.previousElementSibling.innerText) + 1
 
-// function incrementLikeCounter(e) {
-//   e
-// }
+      fetch(`http://localhost:3000/toys/${e.target.dataset.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      
+      body: JSON.stringify({
+        "likes": currentLikeCount
+      })
+    })
+    .then(res => res.json())
+    .then((like_obj => {
+      e.target.previousElementSibling.innerText = `${currentLikeCount} likes`;
+  }))
+}})
+
