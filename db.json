@@ -47,6 +47,12 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Alex",
+      "image": "https://unsplash.com/photos/ZtTI0BAxf2U",
+      "likes": 6,
+      "id": 9
     }
   ]
 }
