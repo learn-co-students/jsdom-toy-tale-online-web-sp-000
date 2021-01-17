@@ -47,6 +47,42 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Chewbaca",
+      "image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEhUSExIVFRUWFRgVFRYVFRUVFRUVFRUWGBcXFhYYHSggGBolGxUYITEhJSkrLi4uGB8zODMtNygtLisBCgoKDg0OGhAQGC0dHR8tLS0tLS0tLS0tLS0tLS0tLS0rLS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALcBEwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAACAAEDBAUGBwj/xAA8EAABAwIDBgMGBgEEAQUAAAABAAIRAyEEMUEFElFhcYEGIpETMqGxwfBCUmLR4fEHFDNygiMVJJLS4v/EABkBAAMBAQEAAAAAAAAAAAAAAAABAgMEBf/EACQRAAICAwEBAAICAwEAAAAAAAABAhEDITFBElFhEzIicYEE/9oADAMBAAIRAxEAPwD1RrVK1qTQpWhUSMGp91GAlCABARgJQnCYBBEhRBFAEE6FVcftGnRaXPcBGmvYJMZclQY3HU6Td6o8NHErgNr/AOQKhkUGBoj3nlpM34GNOa4zau2alXzVrnKf6UPIkWsbPacPtug/3ajTxEgH0Oiq1vFmFY/cLzPECWiIm46rxZ+MLajWh0SBHLiOkFqGpiYiBbIwciT+/wB8Z/kZX8aPZm+LqJc4NuxpALxoTkS0x5ZtPFdBTcHAEXBEhfPRxJgQQCbzeDbI8rz3XS0PF9fD0/ZNfMtLRNy0wAHNOlyhZPyDx60exQnhed+C/GpdWOHxDz5gDSe6Ik5sLuPCdQRwXokq07M2qFCYokJTEMlKSElMBymTSmJTEOkmlNKBhpSglNKVAGXICUxcgLkUFhFyAlMXIC5FBYRKjLkJcgc5FBYcpKHfSQFk4UjVE1SBMRIE4QhEigHTpgiQAgESQUONrimxz3GABpc9k2BxfjLxJiW1H0MOGtDGTUqEkOkid1gAN4+wvLKmJdWe58uL8zvPfvc/NMlbn",
+      "likes": 99,
+      "id": 9
+    },
+    {
+      "name": "Hans Solo",
+      "image": "no image",
+      "likes": 99,
+      "id": 10
+    },
+    {
+      "name": "Millenium Falcon",
+      "image": "aint no image",
+      "likes": 99,
+      "id": 11
+    },
+    {
+      "name": "gi joe",
+      "image": "nope",
+      "likes": 99,
+      "id": 12
+    },
+    {
+      "name": "gi joe",
+      "image": "nope",
+      "likes": 99,
+      "id": 13
+    },
+    {
+      "name": "gi joe",
+      "image": "nope",
+      "likes": 99,
+      "id": 14
     }
   ]
 }
