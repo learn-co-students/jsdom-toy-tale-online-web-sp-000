@@ -103,9 +103,3 @@ function addLikes(likeAmount, id){
     results = `${likeAmount} likes`;
   })
 }
-
-
-
-
-
-
