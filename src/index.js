@@ -13,3 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+<div class="card">
+    <h2>Woody</h2>
+    <img src=toy_image_url class="toy-avatar" />
+    <p>4 Likes </p>
+    <button class="like-btn">Like <3</button>
+  </div>
