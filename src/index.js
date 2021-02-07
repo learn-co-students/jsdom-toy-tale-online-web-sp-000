@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   getToys()
-  //postToys()
 });
 
 const collection = document.getElementById("toy-collection")
@@ -29,15 +28,12 @@ function getToys(){
   });
 }
 
-// const form = document.getElementsByClassName("add-toy-form");
-// form.addEventListener("submit", (){
-//   function postToys(
-//     //name.value
-//     //image.value
-//   )
-// });
+const form = document.getElementsByClassName("add-toy-form");
+form[0].addEventListener("submit", (e) => {
+    postToys(e)
+})
 
-function postToys(name, image){
+function postToys(e){
   fetch("http://localhost:3000/toys", {
     method: "POST",
     headers: {
@@ -45,8 +41,8 @@ function postToys(name, image){
       Accept: "application/json"
     },
     body: JSON.stringify({
-      "name": name,
-      "image": image,
+      "name": e.target.name.value,
+      "image": e.target.image.value,
       "likes": 0
     })
   })
@@ -69,6 +65,7 @@ function renderToys(toy){
   img.src = toy.image
 
   let p = document.createElement("p");
+  p.setAttribute("id", `${toy.id}`)
   p.innerHTML = `${toy.likes} likes`
 
   let btn = document.createElement("button");
@@ -87,21 +84,20 @@ function renderToys(toy){
 function likes(e){
   e.preventDefault()
 
+  let id = e.target.previousElementSibling.id
   let currentLikes = e.target.previousElementSibling.innerText.split(" ")[0]
   let updated = parseInt(currentLikes) + 1
 
-  let configObj = {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: JSON.stringify({
-      "likes": `${updated}`
+   fetch(`http://localhost:3000/toys/${id}`, {
+     method: "PATCH",
+     headers: {
+       "Content-Type": "application/json",
+       Accept: "application/json"
+     },
+     body: JSON.stringify({
+       "likes": `${updated}`
+     })
     })
-   };
-
-   fetch(`http://localhost:3000/toys/${e.target.id}`, configObj)
      .then(resp => resp.json())
      .then(object => {
        e.target.previousElementSibling.innerText = `${updated} likes`;
