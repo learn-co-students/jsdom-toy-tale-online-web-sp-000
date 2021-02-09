@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
       toyFormContainer.style.display = "none";
     }
   });
-  // My code starts here
 
   fetch("http://localhost:3000/toys")
     .then(function(response) {
@@ -39,20 +38,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let p = document.createElement("p");
     p.textContent = `${toy.likes} Likes`;
+    p.classList.add("likes")
 
     let likeBtn = document.createElement("button");
     likeBtn.classList.add("like-btn");
     likeBtn.textContent = "Like";
-    // button.addEventListener("click", addLike)
+    likeBtn.addEventListener("click", addLike);
 
+    let id = document.createElement("p");
+    id.textContent = toy.id;
+    id.classList.add("toy-id");
+    id.style.visibility = "hidden";
+
+    toyCollection.appendChild(div);
     div.appendChild(h2);
     div.appendChild(img);
     div.appendChild(p);
     div.appendChild(likeBtn);
+    div.appendChild(id);
   }
 
-  // Add a New Toy
+  const addToyForm = document.querySelector("form.add-toy-form");
+  addToyForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  
+  let name = document.querySelector("input[name='name']").value;
+  let image = document.querySelector("input[name='image']").value;
+
+  let newToyData = {
+    name: name,
+    image: image,
+    likes: 0
+   };
+   
+  let configObj = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(newToyData)
+   };
+
+   makeNewToy(configObj)
+  })
+    
+  function makeNewToy(configObj) {
+    fetch("http://localhost:3000/toys", configObj)
+    .then(resp => resp.json())
+    .then(function(object) {
+      console.log(object);
+    })
+    .catch(function(error){
+      console.log(error.message);
+    })    
+  }   
+
+  function addLike() {
+    let id = this.parentElement.querySelector("p.toy-id").textContent;
+    let numLikes = parseInt(this.parentElement.querySelector("p.likes").textContent.split(" ")[0]) + 1;
+    this.parentElement.querySelector("p.likes").textContent = numLikes + " Likes";
+
+    likeObj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type" : "application/json",
+        "Accept" : "application/json"
+      },
+      body: JSON.stringify({likes: numLikes})
+    }
+    
+    fetch(`http://localhost:3000/toys/${id}`, likeObj)
+    .then(resp => resp.json())
+    .then(obj => console.log(obj))
+    .catch(function(error){
+      console.log(error.message)
+    })
+  }
 
 });

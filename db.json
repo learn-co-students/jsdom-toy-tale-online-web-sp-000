@@ -10,7 +10,7 @@
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 8
+      "likes": 10
     },
     {
       "id": 3,
@@ -47,6 +47,36 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Duck",
+      "image": "https://www.pexels.com/photo/yellow-duck-toy-beside-green-duck-toy-132464/",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "name": "Duckie",
+      "image": "https://www.pexels.com/photo/yellow-duck-toy-beside-green-duck-toy-132464/",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "Duckie 2",
+      "image": "https://www.pexels.com/photo/yellow-duck-toy-beside-green-duck-toy-132464/",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "name": "Rubber Duckie",
+      "image": "",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "name": "Tennis Ball",
+      "image": "",
+      "likes": 0,
+      "id": 13
     }
   ]
 }
