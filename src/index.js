@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toyFormContainer.addEventListener('submit', event => {
         event.preventDefault();
         postToy(event.target);
+        event.target.reset();
       });
     } else {
       toyFormContainer.style.display = "none";
@@ -46,9 +47,28 @@ function postToy(toyData) {
   return fetch('http://localhost:3000/toys', toyObj)
     .then(response => response.json())
     .then((toy) => {
-      let newToy = displayToys(toy);
-      toysDiv.append(newToy);
+      displayToys(toy);
     });
+}
+
+function addLikes(event) {
+  event.preventDefault();
+  let updatedLikes = parseInt(event.target.previousElementSibling.innerText) + 1;
+  
+  return fetch(`http://localhost:3000/toys/${event.target.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      likes: updatedLikes
+    })
+  })
+    .then(response => response.json())
+    .then((likesObj => {
+      event.target.previousElementSibling.innerText = `${likesObj.likes} likes`;
+    }));
 }
 
 function displayToys(toy) {
@@ -66,6 +86,11 @@ function displayToys(toy) {
   btn.setAttribute('class', 'like-btn');
   btn.setAttribute('id', toy.id);
   btn.innerText = 'Like';
+  btn.addEventListener('click', event => {
+    // console.log(event.target);
+    // console.log(parseInt(event.target.previousElementSibling.innerText) + 1);
+    addLikes(event);
+  });
 
   let divCard = document.createElement("div");
   divCard.setAttribute("class", "card");
