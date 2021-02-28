@@ -47,6 +47,12 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    }, 
+    {
+      "name": "Chandra ",
+      "image": "https://images.pexels.com/photos/12211/pexels-photo-12211.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+      "likes": 5,
+      "id": 9
     }
   ]
 }
