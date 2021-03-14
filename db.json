@@ -22,13 +22,13 @@
       "id": 4,
       "name": "Slinky Dog",
       "image": "https://www.freeiconspng.com/uploads/slinky-png-transparent-1.png",
-      "likes": 4
+      "likes": 5
     },
     {
       "id": 5,
       "name": "Rex",
       "image": "http://umich.edu/~chemh215/W11HTML/SSG5/ssg5.2/FRex.png",
-      "likes": 1
+      "likes": 2
     },
     {
       "id": 6,
@@ -46,7 +46,25 @@
       "id": 8,
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
-      "likes": -2
+      "likes": 4
+    },
+    {
+      "name": "pearl",
+      "image": "https://drawcentral.com/wp-content/uploads/2015/04/how-to-draw-pearl1.jpg",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "name": "pearl",
+      "image": "https://drawcentral.com/wp-content/uploads/2015/04/how-to-draw-pearl1.jpg",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "pearl",
+      "image": "https://drawcentral.com/wp-content/uploads/2015/04/how-to-draw-pearl1.jpg",
+      "likes": 0,
+      "id": 11
     }
   ]
 }
