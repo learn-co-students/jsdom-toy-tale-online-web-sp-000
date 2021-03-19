@@ -119,7 +119,7 @@ function likeToy(toyData) {
             })
             .then(function(object) {
               update(object)
-              console.log(object.likes)
+              //console.log(object.likes)
             })
             .catch(function(error) {
                 let p = document.createElement('p');
