@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Woody",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Woody-PNG-Photos.png",
-      "likes": 5
+      "likes": 6
     },
     {
       "id": 2,
@@ -46,7 +46,7 @@
       "id": 8,
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
-      "likes": -2
+      "likes": 0
     },
     {
       "name": "turtle",
@@ -75,8 +75,44 @@
     {
       "name": "Robin",
       "image": "https://th.bing.com/th/id/OIP.2s1lBv6bRnF1Cx8w5CNemAHaKs?w=182&h=262&c=7&o=5&dpr=2&pid=1.7",
-      "likes": 0,
+      "likes": 6,
       "id": 13
+    },
+    {
+      "name": "Baymax",
+      "image": "https://th.bing.com/th/id/OIP.O9Q5bXv5p9jR7IeLz-_P7gHaFj?w=227&h=180&c=7&o=5&dpr=2&pid=1.7",
+      "likes": 0,
+      "id": 14
+    },
+    {
+      "name": "Pooh",
+      "image": "https://th.bing.com/th/id/OIP.mjsJiZDQttdwhFtFFZgdxQHaHa?w=191&h=191&c=7&o=5&dpr=2&pid=1.7",
+      "likes": 0,
+      "id": 15
+    },
+    {
+      "name": "Rock um Sock um",
+      "image": "https://www.bing.com/th?id=OP.ddgYmZJ0gdmrqQ474C474&o=5&pid=21.1&bw=0&bc=FFFFFF&w=140&h=140&qlt=100&dpr=2",
+      "likes": 0,
+      "id": 16
+    },
+    {
+      "name": "C3PO",
+      "image": "https://th.bing.com/th/id/R5197c2ea3f18633929c15f35009821a3?rik=OnzOlozQJOjWmw&riu=http%3a%2f%2fwww.theoldrobots.com%2fimages27%2fc3po_06.JPG&ehk=QRcv0rEIBoUklITnDQBNYEkxWyfxnjP8zKwCfJw6RrA%3d&risl=&pid=ImgRaw",
+      "likes": 0,
+      "id": 17
+    },
+    {
+      "name": "R2-D2",
+      "image": "https://th.bing.com/th/id/Rfcad07344f1ce8f1014f20cd425b4fd3?rik=NKG9YiRI8SUvvA&pid=ImgRaw",
+      "likes": 0,
+      "id": 18
+    },
+    {
+      "name": "BB8",
+      "image": "https://th.bing.com/th/id/R47642eff6132972f55ff15d04356be2f?rik=pMycXnkdociJyA&pid=ImgRaw",
+      "likes": 0,
+      "id": 19
     }
   ]
 }

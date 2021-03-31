@@ -31,7 +31,7 @@ function newToy(toyForm){fetch('http://localhost:3000/toys', {
     likes: 0
     }
   )
-}).then(function(response){console.log(response.json())})
+}).then(response => response.json()).then(toy => makeToyCard(toy))
 }
 
 function makeToyCard(toy){
@@ -50,13 +50,31 @@ function makeToyCard(toy){
   toyCard.appendChild(toyPic)
 
   const toyLikes = document.createElement('p')
-  toyLikes.innerText = toy.likes + 'Likes'
+  toyLikes.innerText = toy.likes + ' Likes'
   toyCard.appendChild(toyLikes)
 
   const toyLikeButton = document.createElement('button')
   toyLikeButton.setAttribute('class','like-btn')
   toyLikeButton.innerText = 'Like <3'
   toyCard.appendChild(toyLikeButton)
+  toyLikeButton.addEventListener('click', addLike)
+  toyLikeButton.setAttribute('id', toy.id)
+
+}
+
+function addLike(event){
+  const like = event.target.previousElementSibling;
+  const addOne = parseInt(like.innerText) + 1;
+  return fetch(`http://localhost:3000/toys/${event.target.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'},
+    body: JSON.stringify({
+        likes: addOne
+      })
+
+  }).then(like.innerText = addOne + " Likes")
 
 }
 
