@@ -22,7 +22,7 @@
       "id": 4,
       "name": "Slinky Dog",
       "image": "https://www.freeiconspng.com/uploads/slinky-png-transparent-1.png",
-      "likes": 4
+      "likes": 8
     },
     {
       "id": 5,
@@ -40,13 +40,37 @@
       "id": 7,
       "name": "Hamm",
       "image": "https://cdn140.picsart.com/244090226021212.png?r1024x1024",
-      "likes": 0
+      "likes": 2
     },
     {
       "id": 8,
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
-      "likes": -2
+      "likes": null
+    },
+    {
+      "name": "bbb",
+      "image": "bbb",
+      "likes": 1,
+      "id": 9
+    },
+    {
+      "name": "h",
+      "image": "h",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "name": "w",
+      "image": "ww",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "name": "df",
+      "image": "df",
+      "likes": 0,
+      "id": 12
     }
   ]
 }
