@@ -50,9 +50,10 @@ function addToyInfo(div, element) {
   const likesTag = displayLikes(div, element);
 
   const likeButton = document.createElement("button");
-  likeButton.onclick = function () {
-    incrementLikes(element, likesTag);
-  };
+  likeButton.addEventListener('click', e => likes(e))
+  // likeButton.onclick = function () {
+    // incrementLikes(element, likesTag);
+  // };
   likeButton.classList.add("like-btn");
   likeButton.innerHTML = "Like <3";
   div.appendChild(likeButton);
@@ -96,25 +97,50 @@ function createNewToy(event) {
     });
 }
 
-function incrementLikes(dbElement, likesTag) {
-  const updateObj = {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      likes: dbElement.likes + 1,
-      id: dbElement.id,
-    }),
-  };
+function likes(e) {
+  let more = parseInt(e.target.previousElementSibling.innerText) + 1;
+  let id = e.target.parentNode.id
+  console.log(id);
 
-  fetch(`http://localhost:3000/toys/${dbElement.id}`, updateObj)
-    .then(function (res) {
-      return res.json();
+  const updateObj = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          likes: more
+        }),
+      };
+
+    fetch(`http://localhost:3000/toys/${id}`, updateObj)
+    .then(resp => resp.json())
+    .then(json =>  {
+      console.log(json)
+      e.target.previousElementSibling.innerText = more;
     })
-    .then(function (object) {
-      dbElement.likes = object.likes;
-      likesTag.innerHTML = `${object.likes} Likes`;
-    });
 }
+
+// function incrementLikes(dbElement, likesTag) {
+//   const updateObj = {
+//     method: "PATCH",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Accept: "application/json",
+//     },
+//     body: JSON.stringify({
+//       likes: dbElement.likes + 1,
+//       id: dbElement.id,
+//     }),
+//   };
+
+//   fetch(`http://localhost:3000/toys/${dbElement.id}`, updateObj)
+//     .then(function (res) {
+//       return res.json();
+//     })
+//     .then(function (object) {
+//       console.log(object);
+//       //dbElement.likes = object.likes;
+//       likesTag.innerHTML = `${object.likes} Likes`;
+//     });
+// }
