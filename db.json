@@ -28,7 +28,7 @@
       "id": 5,
       "name": "Rex",
       "image": "http://umich.edu/~chemh215/W11HTML/SSG5/ssg5.2/FRex.png",
-      "likes": 1
+      "likes": 2
     },
     {
       "id": 6,
@@ -47,6 +47,23 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "test",
+      "image": "toyForm.style.display = 'block'     toyForm.addEventListener('submit', event => {       event.preventDefault()       postToy(event.target)     })",
+      "id": 9
+    },
+    {
+      "name": "test",
+      "image": "https://previews.123rf.com/images/olegdudko/olegdudko1510/olegdudko151007353/46794713-toys-.jpg",
+      "id": 10,
+      "likes": null
+    },
+    {
+      "name": "test test",
+      "image": "https://previews.123rf.com/images/olegdudko/olegdudko1510/olegdudko151007353/46794713-toys-.jpg",
+      "likes": 1,
+      "id": 11
     }
   ]
 }
