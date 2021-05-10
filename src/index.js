@@ -50,11 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
       toyDiv.appendChild(likeButton)
 
       toyCollectionDiv.appendChild(toyDiv)
-      likeButton.addEventListener('click', increaseLikes(toyId))
+      likeButton.addEventListener('click', increaseLikes)
     })
   }
 
-  function increaseLikes(id) {
+  function increaseLikes(event) {
+    let id = event.target.id
     let currentLikes = document.getElementById(`${id}`)
     let likeNumber = currentLikes.previousSibling.innerText
     let configObject = {
@@ -67,12 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
         "likes": `${parseInt(likeNumber, 10) + 1}`
       })
     }
-    fetch(`http://localhost:3000/${id}`, configObject)
-    .then(resp => resp.json())
-    .then(json => console.log(json))
+    fetch(`http://localhost:3000/toys/${id}`, configObject)
     .catch(error => console.log(error.message))
 
-    likeNumber = likeNumber + 1
+    currentLikes.previousSibling.innerText = parseInt(likeNumber, 10) + 1
   }
 
   const addToyForm = document.getElementsByClassName('add-toy-form')
