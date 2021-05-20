@@ -10,7 +10,7 @@
       "id": 2,
       "name": "Buzz Lightyear",
       "image": "http://www.pngmart.com/files/6/Buzz-Lightyear-PNG-Transparent-Picture.png",
-      "likes": 14
+      "likes": 15
     },
     {
       "id": 3,
@@ -47,6 +47,12 @@
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
       "likes": -2
+    },
+    {
+      "name": "Baby Yoda",
+      "image": "https://target.scene7.com/is/image/Target/GUEST_c9596f8d-70ad-4700-af78-39b40fd95e09?wid=488&hei=488&fmt=pjpeg",
+      "likes": 0,
+      "id": 9
     }
   ]
 }
