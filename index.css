@@ -97,3 +97,15 @@ button:hover {
   font-family: monospace;
   margin: 3px;
 }
+
+.card {
+  margin: 0;
+  height: inherit;
+  width: inherit;
+}
+
+img {
+  margin: 0;
+  height: 100px;
+  width: 100px;
+}
