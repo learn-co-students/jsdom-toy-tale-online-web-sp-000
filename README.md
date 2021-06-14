@@ -1,4 +1,4 @@
-# Toy Tale
+<!-- # Toy Tale
 
 You've got a friend in need! Your friend Andy recently misplaced all their toys!
 Help Andy recover their toys and get the toys back in the toy collection.
@@ -13,17 +13,17 @@ data using a JSON server. In order to do this, run the following two commands:
 
 This will create a server storing all of our lost toy data with restful routes
 at `http://localhost:3000/toys`. You can also check out
-`http://localhost:3000/toys/:id`
+`http://localhost:3000/toys/:id` -->
 
-## Fetch Andy's Toys
+<!-- ## Fetch Andy's Toys -->
 
-On the `index.html` page, there is a `div` with the `id` "toy-collection."
+<!-- On the `index.html` page, there is a `div` with the `id` "toy-collection." -->
 
-When the page loads, make a 'GET' request to fetch all the toy objects. With the
+<!-- When the page loads, make a 'GET' request to fetch all the toy objects. With the
 response data, make a `<div class="card">` for each toy and add it to the
-toy-collection `div`.
+toy-collection `div`. -->
 
-## Add Toy Info to the Card
+<!-- ## Add Toy Info to the Card
 
 Each card should have the following child elements:
 
@@ -41,9 +41,9 @@ After all of that, the toy card should resemble:
     <p>4 Likes </p>
     <button class="like-btn">Like <3</button>
   </div>
-```
+``` -->
 
-## Add a New Toy
+<!-- ## Add a New Toy
 
 When a user submits the toy form, two things should happen:
 
@@ -71,8 +71,8 @@ body: JSON.stringify({
 })
 ```
 
-For examples, refer to the [documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Supplying_request_options).
-
+For examples, refer to the [documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Supplying_request_options). -->
+<!-- 
 ## Increase Toy's Likes
 
 When a user clicks on a toy's like button, two things should happen:
@@ -98,4 +98,4 @@ body: JSON.stringify({
 ```
 
 If your request isn't working, make sure your headers and keys match the
-documentation.
+documentation. -->
