@@ -1,7 +1,10 @@
-const addBtn = document.querySelector('#new-toy-btn')
-const toyForm = document.querySelector('.container')
-let addToy = false
-let divCollect = document.querySelector('#toy-collection')
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const addBtn = document.querySelector('#new-toy-btn')
+  const toyForm = document.querySelector('.container')
+  let addToy = false
+  let divCollect = document.querySelector('#toy-collection')
 
 
 function getToys() {
@@ -100,3 +103,4 @@ getToys().then(toys => {
     renderToys(toy)
   })
 })
+});
